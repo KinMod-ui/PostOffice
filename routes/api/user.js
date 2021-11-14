@@ -74,10 +74,10 @@ router.post('/' , [
 
 // todo -> Update user's details
 
-// @route PATCH api/users/type/:id
-// @desc Updates the type of user whose id is given
+// @route PATCH api/users/type/:username
+// @desc Updates the type of user whose username is given
 // @access private
-router.patch('/type/:id' , [auth , [check('type' , 'Type must be one of Normal/Admin/Incoming Handler/OutGoing Handler').isIn(['Normal' , 'Admin' , 'Incoming Handler' , 'OutGoing Handler'])
+router.patch('/type/:username' , [auth , [check('type' , 'Type must be one of Normal/Admin/Incoming Handler/OutGoing Handler').isIn(['Normal' , 'Admin' , 'Incoming Handler' , 'OutGoing Handler'])
 ]] , async(req , res) => {
 
     const errors = validationResult(req);
@@ -87,16 +87,22 @@ router.patch('/type/:id' , [auth , [check('type' , 'Type must be one of Normal/A
 
     try{
         const mainUser = await User.findById(req.user.id);
-        const toChangeUser = await User.findById(req.params.id);
+        const toChangeUser = await User.findOne({username : req.params.username});
+
+        console.log("wowowow" ,toChangeUser)
 
         if (mainUser.type !== 'Admin'){
             return res.status(401).json({msg : "User not authroized"})
         }
 
+        if (!toChangeUser){
+            return res.status(400).json({msg : "User doesn't exist"})
+        }
+
         toChangeUser.type = req.body.type;
         toChangeUser.save();
 
-        res.json(toChangeUser);
+        res.json(toChangeUser.username);
 
     } catch (err) {
         console.error(err.message);
