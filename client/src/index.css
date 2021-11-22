@@ -1,3 +1,10 @@
+.background {
+  background-image: url("joanna-kosinska-uGcDWKN91Fs-unsplash.jpg");
+  height: 100vh;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
 .dashboard {
   margin: auto;
   width: 50%;
