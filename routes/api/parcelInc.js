@@ -10,7 +10,8 @@ const User = require('../../models/User');
 // @access Private
 router.post('/' , [auth , [
     check('PackageDescription' , 'Please enter a description for your package').not().isEmpty(),
-    check('username' , 'Please enter ').not().isEmpty(),
+    check('username' , 'Please enter the username ').not().isEmpty(),
+    check('name' , 'Please enter the name').not().isEmpty(),
 ]] , async(req , res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()){
@@ -26,17 +27,23 @@ router.post('/' , [auth , [
         if (!user){
             return res.status(400).json({msg : "User doesn't exist"})
         }
+        // if (!reqUser){
+        //     return res.status(400).json({msg : "Request User doesn't exist"})
+        // }
 
         if (reqUser.type !== 'Incoming Handler' && reqUser.type !== 'Admin'){
             return res.status(401).json({msg : "User not authroized"})
         }
+        // console.log(reqUser);
 
         const newParcelInc = new ParcelIncoming({
             PackageDescription : req.body.PackageDescription,
-            user , 
-            Status : "Not Picked"
+            Status : "Not Picked",
+            user : reqUser,
+            name : user.name,
+            username : user.username,
         })
-
+        
         const parcel = await newParcelInc.save();
 
         res.json(parcel);
@@ -66,12 +73,92 @@ router.get('/parcel/:id' , auth , async (req , res) => {
     }
 })
 
+const emptyString = "";
+
+// @route POST api/parcelInc/parcel/:id
+// @desc Update parcelInc by id
+// @access Private
+router.post('/parcel/:id' , [auth , 
+    [check('PackageDescription' , 'Please enter a description for your package').not().isEmpty(),
+    check('username' , 'Please enter a username').not().isEmpty(),
+    check('PickedBy' , 'Please enter the value of Picked by').custom((picked) => {
+        return picked !== ""
+    }),
+    ]] , async (req , res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()){
+        return res.status(400).json({errors : errors.array()})
+    }
+
+    try {
+        // console.log(req.body.PickedBy , (req.body.PickedBy === emptyString));
+        const user = await User.findOne({username : req.body.username}).select('-password');
+
+        // reqUser is the guard
+
+        const reqUser = await User.findById(req.user.id).select('-password');
+        
+        if (!user){
+            return res.status(400).json({msg : "User doesn't exist"})
+        }
+
+        if (!reqUser){
+            return res.status(400).json({msg : "Requested User doesn't exist"})
+        }
+
+        if (reqUser.type !== 'Incoming Handler' && reqUser.type !== 'Admin'){
+            return res.status(401).json({msg : "User not authroized"})
+        }
+        
+        const newParcelInc = await ParcelIncoming.findById(req.params.id)
+
+        if (!newParcelInc){
+            return res.status(404).json({msg : "Parcel Not found"})
+        }
+
+        Object.assign(newParcelInc ,{
+            PackageDescription : req.body.PackageDescription,
+            user : reqUser,
+            Status : req.body.Status || "Not Picked",
+            name : user.name,
+            username : user.username,
+            PickedBy : req.body.Status === "Not Picked" ? undefined : req.body.PickedBy,
+            PickedAt : req.body.Status === "Not Picked" ? undefined : ( Date.now())
+        })
+        
+        const parcel = await newParcelInc.save();
+        
+        res.json(parcel);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+})
+
 // @route GET api/parcelInc
 // @desc Get all the incoming parcels of the current user
 // @access Private
 router.get('/' , auth , async (req , res) => {
     try{
-        const parcels = await ParcelIncoming.find({user : req.user.id});
+        const parcels = await ParcelIncoming.find({user : req.user.id}).sort({ date: -1 });
+        res.json(parcels)
+
+    } catch(err){
+        console.error(err.message);
+        if (err.kind === 'ObjectId'){
+            return res.status(404).json({msg : "Parcel Not found"})
+        }
+        res.status(500).send("Server Error")
+    }
+})
+
+// @route GET api/parcelInc/All
+// @desc Get all the incoming parcels of the current user
+// @access Private
+router.get('/All' , async (req , res) => {
+    try{
+        const parcels = await ParcelIncoming.find().sort({ date: -1 });
         res.json(parcels)
 
     } catch(err){

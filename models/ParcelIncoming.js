@@ -6,6 +6,12 @@ const ParcelIncomingSchema = new Schema({
         type : Schema.Types.ObjectId,
         ref : 'user'
     },
+    name : {
+        type : String
+    },
+    username : {
+        type : String
+    },
     PackageDescription : {
         type : String,
         required : true
