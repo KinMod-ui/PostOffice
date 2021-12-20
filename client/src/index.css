@@ -1,3 +1,14 @@
+.background {
+  background-image: url("joanna-kosinska-uGcDWKN91Fs-unsplash.jpg");
+  height: 100vh;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.navbtn {
+  margin: 5px !important;
+}
+
 .dashboard {
   margin: auto;
   width: 50%;

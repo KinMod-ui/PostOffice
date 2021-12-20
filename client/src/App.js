@@ -1,16 +1,23 @@
-import { BrowserRouter as Router, Routes, Route  , Navigate, Switch ,BrowserRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  Switch,
+  BrowserRouter,
+} from "react-router-dom";
 import { useEffect } from "react";
 import AccessManager from "./Components/AccessManager";
 import Dashboard from "./Components/Dashboard";
 import GuardTables from "./Components/GuardTables";
-import Login from './Components/Auth/Login'
+import Login from "./Components/Auth/Login";
 import Navbar from "./Components/Navbar";
 import OutgoingHandle from "./Components/OutgoingHandle";
 import RecieveHistory from "./Components/RecieveHistory";
 import SendData from "./Components/SendData";
 import Addpackage from "./Components/Addpackage";
 import SentHistory from "./Components/SentHistory";
-import Alert from './Components/Alert';
+import Alert from "./Components/Alert";
 import setAuthToken from "./utils/setAuthToken";
 import Register from "./Components/Register";
 import NotFound from './Components/NotFound';
@@ -18,12 +25,11 @@ import PrivateRoute from "./Components/routing/PrivateRoute";
 import { LOGOUT } from './actions/types';
 
 // redux stuff
-import {Provider} from 'react-redux';
-import store from './store';
+import { Provider } from "react-redux";
+import store from "./store";
 import { loadUser } from "./actions/auth";
 
 const App = () => {
-
   useEffect(() => {
     // check for token in LS when app first runs
     if (localStorage.token) {
@@ -41,31 +47,60 @@ const App = () => {
   }, []);
 
   return (
-
     <Provider store={store}>
       <div className="App">
-      <Router>
-        <Navbar />
-        <Alert />
-        <Routes>
-          <Route exact path='/dashboard' element={<PrivateRoute component={Dashboard} />} />
-            <Route exact path="/recieveHistory" element={<PrivateRoute component={RecieveHistory} />} />
-            <Route exact path="/sentHistory" element={<PrivateRoute component={SentHistory} />} />
-            <Route exact path="/sendData" element={<PrivateRoute component={SendData} />} />
-            <Route exact path="/guardTables"element={<PrivateRoute component={GuardTables} />} />
-            <Route exact path="/outgoingHandle" element={<PrivateRoute component={OutgoingHandle} />} />
-            <Route exact path="/accessManager" element={<PrivateRoute component={AccessManager} />} />
-            <Route exact path="/Addpackage" element={<PrivateRoute component={Addpackage} />} />
-          
-          <Route exact path="/login" element={<Login/>} />
-          <Route exact path="/Register" element={<Register/>} />
-          <Route path="/*" element={<NotFound />} />
+        <Router>
+          <Navbar />
+          <Alert />
+          <Routes>
+            <Route
+              exact
+              path="/dashboard"
+              element={<PrivateRoute component={Dashboard} />}
+            />
+            <Route
+              exact
+              path="/recieveHistory"
+              element={<PrivateRoute component={RecieveHistory} />}
+            />
+            <Route
+              exact
+              path="/sentHistory"
+              element={<PrivateRoute component={SentHistory} />}
+            />
+            <Route
+              exact
+              path="/sendData"
+              element={<PrivateRoute component={SendData} />}
+            />
+            <Route
+              exact
+              path="/guardTables"
+              element={<PrivateRoute component={GuardTables} />}
+            />
+            <Route
+              exact
+              path="/outgoingHandle"
+              element={<PrivateRoute component={OutgoingHandle} />}
+            />
+            <Route
+              exact
+              path="/accessManager"
+              element={<PrivateRoute component={AccessManager} />}
+            />
+            <Route
+              exact
+              path="/Addpackage"
+              element={<PrivateRoute component={Addpackage} />}
+            />
+            <Route exact path="/" element={<Login />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/Register" element={<Register />} />
           </Routes>
         </Router>
       </div>
     </Provider>
   );
-}
-
+};
 
 export default App;
