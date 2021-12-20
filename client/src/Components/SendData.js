@@ -1,6 +1,14 @@
 import React from "react";
+import Spinner from "./Spinner";
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-export default function SendData() {
+const  SendData = (isLoading)  => {
+
+  if  (isLoading){
+    <Spinner />
+  }
+
   return (
     <div className="container sendForm">
       <div className="row">
@@ -137,3 +145,14 @@ export default function SendData() {
     </div>
   );
 }
+
+SendData.propTypes = {
+  
+  isLoading : PropTypes.bool
+}
+
+const mapStateToProps = state => ({
+  isLoading : state.auth.Loading
+});
+
+export default connect(mapStateToProps , null )(SendData);

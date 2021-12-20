@@ -74,6 +74,19 @@ router.post('/' , [
 
 // todo -> Update user's details
 
+// @route GET api/users/email/:username
+// @desc Get email of the user
+// @access Private
+router.get('/email/:username' , auth , async(req , res) => {
+    try {
+        const user = await User.findOne({username : req.params.username} , {email : 1 , _id : 0});
+        res.json(user);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error")
+    }
+});
+
 // @route PATCH api/users/type/:username
 // @desc Updates the type of user whose username is given
 // @access private
@@ -89,7 +102,7 @@ router.patch('/type/:username' , [auth , [check('type' , 'Type must be one of No
         const mainUser = await User.findById(req.user.id);
         const toChangeUser = await User.findOne({username : req.params.username});
 
-        console.log("wowowow" ,toChangeUser)
+        // console.log("wowowow" ,toChangeUser)
 
         if (mainUser.type !== 'Admin'){
             return res.status(401).json({msg : "User not authroized"})
