@@ -5,6 +5,10 @@
   background-repeat: no-repeat;
 }
 
+.navbtn {
+  margin: 5px !important;
+}
+
 .dashboard {
   margin: auto;
   width: 50%;
