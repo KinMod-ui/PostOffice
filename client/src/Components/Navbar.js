@@ -26,13 +26,13 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
         <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
         {/* only show when user logged in */}
         <Link to="/dashboard">
-          <button className="btn btn-primary" type="submit">
+          <button className="btn btn-primary navbtn" type="submit">
             Hello {user ? user.name : "wowowza"}
           </button>
         </Link>
         <button
           onClick={logout}
-          className="btn btn-primary"
+          className="btn btn-primary navbtn"
           type="submit"
           href="#!"
         >
