@@ -1,4 +1,4 @@
 {
-    "mongoURI" : "mongodb://kin123:<password>@firstcluster-shard-00-00.meo7k.mongodb.net:27017,firstcluster-shard-00-01.meo7k.mongodb.net:27017,firstcluster-shard-00-02.meo7k.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-o5jsvv-shard-0&authSource=admin&retryWrites=true&w=majority",
-    "jwtSecret" : "<wowSecret>"
+    "mongoURI" : "mongodb://kin123:kin123@firstcluster-shard-00-00.meo7k.mongodb.net:27017,firstcluster-shard-00-01.meo7k.mongodb.net:27017,firstcluster-shard-00-02.meo7k.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-o5jsvv-shard-0&authSource=admin&retryWrites=true&w=majority",
+    "jwtSecret" : "senpaiORZ"
 }

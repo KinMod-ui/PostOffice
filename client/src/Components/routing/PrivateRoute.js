@@ -11,7 +11,7 @@ const PrivateRoute = ({
   if (loading) return <Spinner/>
   if (isAuthenticated)
   if (user !== null)return <Component />;
-  else  return <Fragment>Loading</Fragment>;
+  else  return <Spinner/>;
 
   return <Navigate to="/login" />;
 };
