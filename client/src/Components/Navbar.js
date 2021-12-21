@@ -9,8 +9,13 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
     <div className="container-fluid">
       <Link className="navbar-brand" to="/dashboard">
         {/* we need to change this to login or dashboard link according to session */}
+        <i class="fas fa-mail-bulk fa-2x "></i>
+      </Link>
+      <Link className="navbar-brand" to="/dashboard">
+        {/* we need to change this to login or dashboard link according to session */}
         LNMIIT Post Management
       </Link>
+
       <button
         className="navbar-toggler"
         type="button"
@@ -26,13 +31,13 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
         <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
         {/* only show when user logged in */}
         <Link to="/dashboard">
-          <button className="btn btn-primary navbtn" type="submit">
+          <button className="btn bn632-hover bn26 navbtn" type="submit">
             Hello {user ? user.name : "wowowza"}
           </button>
         </Link>
         <button
           onClick={logout}
-          className="btn btn-primary navbtn"
+          className="btn bn632-hover bn26 navbtn"
           type="submit"
           href="#!"
         >
@@ -47,8 +52,13 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
     <div className="container-fluid">
       <Link className="navbar-brand" to="/dashboard">
         {/* we need to change this to login or dashboard link according to session */}
+        <i class="fas fa-mail-bulk fa-2x "></i>
+      </Link>
+      <Link className="navbar-brand" to="/dashboard">
+        {/* we need to change this to login or dashboard link according to session */}
         LNMIIT Post Management
       </Link>
+
       <button
         className="navbar-toggler"
         type="button"
@@ -64,12 +74,12 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
         <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
         {/* only show when user logged in */}
         <Link to="/login">
-          <button className="btn btn-primary navbtn" type="submit">
+          <button className="btn bn632-hover bn26 navbtn" type="submit">
             Login
           </button>
         </Link>
         <Link to="/register">
-          <button className="btn btn-primary navbtn" type="submit">
+          <button className="btn bn632-hover bn26 navbtn" type="submit">
             Register
           </button>
         </Link>

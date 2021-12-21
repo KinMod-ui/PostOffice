@@ -1,12 +1,11 @@
 import React from "react";
 import Spinner from "./Spinner";
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-const  SendData = (isLoading)  => {
-
-  if  (isLoading){
-    <Spinner />
+const SendData = (isLoading) => {
+  if (isLoading) {
+    <Spinner />;
   }
 
   return (
@@ -137,22 +136,21 @@ const  SendData = (isLoading)  => {
               aria-describedby="recieverNum"
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn bn632-hover bn26">
             Submit
           </button>
         </form>
       </div>
     </div>
   );
-}
+};
 
 SendData.propTypes = {
-  
-  isLoading : PropTypes.bool
-}
+  isLoading: PropTypes.bool,
+};
 
-const mapStateToProps = state => ({
-  isLoading : state.auth.Loading
+const mapStateToProps = (state) => ({
+  isLoading: state.auth.Loading,
 });
 
-export default connect(mapStateToProps , null )(SendData);
+export default connect(mapStateToProps, null)(SendData);

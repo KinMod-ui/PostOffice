@@ -9,14 +9,6 @@
   margin: 5px !important;
 }
 
-.dashboard {
-  margin: auto;
-  width: 50%;
-  height: 50%;
-  border: 1px solid grey;
-  padding: 100px;
-}
-
 .sendForm {
   margin: auto;
   width: 50%;
@@ -105,6 +97,7 @@
   }
 
   /* Navbar */
+
   .navbar {
     display: block;
     text-align: center;
@@ -122,4 +115,83 @@
   .navbar .welcome {
     display: none;
   }
+}
+
+.bn632-hover {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px;
+
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.bn632-hover:hover {
+  background-position: 100% 0;
+
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.bn632-hover:focus {
+  outline: none;
+}
+
+.bn632-hover.bn26 {
+  background-image: linear-gradient(
+    to right,
+    #25aae1,
+    #4481eb,
+    #04befe,
+    #3f86ed
+  );
+  box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+}
+
+.sizecard {
+  width: 100%;
+}
+
+.dash-back {
+  background-image: url("https://images.unsplash.com/photo-1512418490979-92798cec1380?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  height: 100vh;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding-top: 200px;
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  height: 20%;
+  width: 20%;
+  margin: 10px;
+  text-align: center;
+  padding-top: 10px;
+  background-color: rgb(231, 230, 230);
+  color: #fff;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+
+.fasc {
+  color: #25aae1;
 }

@@ -60,7 +60,10 @@ const Login = ({ login, isAuthenticated, loading }) => {
                 </div>
                 <hr className="mt-4" />
                 <div className="col-12">
-                  <button type="submit" className="btn btn-primary float-end">
+                  <button
+                    type="submit"
+                    className="btn bn632-hover bn26 float-end"
+                  >
                     Login
                   </button>
                 </div>
