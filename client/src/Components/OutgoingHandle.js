@@ -83,7 +83,7 @@ export default function OutgoingHandle() {
                 />
               </td>
               <td>
-                <button type="button" className="btn btn-primary">
+                <button type="button" className="btn bn632-hover bn26">
                   Save
                 </button>
               </td>
@@ -153,7 +153,7 @@ export default function OutgoingHandle() {
                 />
               </td>
               <td>
-                <button type="button" className="btn btn-primary">
+                <button type="button" className="btn bn632-hover bn26">
                   Save
                 </button>
               </td>

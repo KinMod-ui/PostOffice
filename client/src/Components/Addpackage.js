@@ -1,30 +1,29 @@
-import React , {useState} from "react";
-import PropTypes from 'prop-types'
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { AddIncPackages } from "../actions/packageIncoming";
-import { sendEmail } from '../EmailHandling/sendEmail'
+import { sendEmail } from "../EmailHandling/sendEmail";
 
-const Addpackage = ({AddIncPackages , sendEmail}) => {
+const Addpackage = ({ AddIncPackages, sendEmail }) => {
+  const [formData, setFormData] = useState({
+    packdes: "",
+    name: "",
+    username: "",
+  });
 
-  const [formData , setFormData] = useState({
-    packdes : "",
-    name : "",
-    username : '',
-  })
+  const { packdes, name, username } = formData;
 
-  const {packdes, name , username} = formData;
-
-  const onClick = e => {
+  const onClick = (e) => {
     e.preventDefault();
     // AddIncPackages(formData);
     console.log(e);
-    e.target.textContent = "Adding Package..."
-    sendEmail(e , formData)
-  }
+    e.target.textContent = "Adding Package...";
+    sendEmail(e, formData);
+  };
 
-  const onChange = e => {
-    setFormData({...formData , [e.target.name] : e.target.value});
-  }
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className="dashboard d-grid gap-2 col-6 mx-auto my-5">
@@ -40,7 +39,7 @@ const Addpackage = ({AddIncPackages , sendEmail}) => {
             aria-describedby="packdes"
             name="packdes"
             value={packdes}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
         </div>
         <div class="mb-3">
@@ -54,7 +53,7 @@ const Addpackage = ({AddIncPackages , sendEmail}) => {
             aria-describedby="Owner's Name"
             name="name"
             value={name}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
         </div>
         <div class="mb-3">
@@ -68,21 +67,25 @@ const Addpackage = ({AddIncPackages , sendEmail}) => {
             aria-describedby="username"
             name="username"
             value={username}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
         </div>
 
-        <button type="submit" class="btn btn-primary" onClick={e => onClick(e)} >
+        <button
+          type="submit"
+          class="btn bn632-hover bn26"
+          onClick={(e) => onClick(e)}
+        >
           Add Package
         </button>
       </form>
     </div>
   );
-}
+};
 
 Addpackage.propTypes = {
-  AddIncPackages : PropTypes.func.isRequired,
-  sendEmail : PropTypes.func.isRequired
-}
+  AddIncPackages: PropTypes.func.isRequired,
+  sendEmail: PropTypes.func.isRequired,
+};
 
-export default connect(null , {AddIncPackages , sendEmail})(Addpackage)
+export default connect(null, { AddIncPackages, sendEmail })(Addpackage);

@@ -1,37 +1,37 @@
-import React , {useEffect} from "react";
-import { GetAllIncPackages } from '../actions/packageIncoming';
-import PropTypes from 'prop-types'
+import React, { useEffect } from "react";
+import { GetAllIncPackages } from "../actions/packageIncoming";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import GuardTableItems from "./GuardTableItems";
 
-const GuardTables = ({GetAllIncPackages , package : {packages , loading}}) => {
-
+const GuardTables = ({ GetAllIncPackages, package: { packages, loading } }) => {
   useEffect(() => {
-    GetAllIncPackages()
-  } , [GetAllIncPackages]);
+    GetAllIncPackages();
+  }, [GetAllIncPackages]);
 
   return (
     <div>
-      <div className="tables">
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Username</th>
-              <th scope="col">Package Description</th>
-              <th scope="col">Status</th>
-              <th scope="col">Picked By</th>
-              <th scope="col">Picked At</th>
-              <th scope="col">Update Package</th>
-            </tr>
-          </thead>
-          <tbody>
-          {packages.map((pack , idx) => (
-          <GuardTableItems key={pack._id} pack={pack} cnt={idx+1} />
-        ))}
-            
-            {/* <tr>
+      <div className="guardTable-main">
+        <div className="tables">
+          <table className="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Username</th>
+                <th scope="col">Package Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Picked By</th>
+                <th scope="col">Picked At</th>
+                <th scope="col">Update Package</th>
+              </tr>
+            </thead>
+            <tbody>
+              {packages.map((pack, idx) => (
+                <GuardTableItems key={pack._id} pack={pack} cnt={idx + 1} />
+              ))}
+
+              {/* <tr>
               <th scope="row">2</th>
               <td>Jane Doe</td>
               <td>00abc000</td>
@@ -77,20 +77,21 @@ const GuardTables = ({GetAllIncPackages , package : {packages , loading}}) => {
                 </button>
               </td>
             </tr> */}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 GuardTables.propTypes = {
   GetAllIncPackages: PropTypes.func.isRequired,
-  package : PropTypes.object.isRequired
-}
+  package: PropTypes.object.isRequired,
+};
 
-const mapStateToProps = state => ({
-  package : state.packages
-})
+const mapStateToProps = (state) => ({
+  package: state.packages,
+});
 
-export default connect(mapStateToProps , {GetAllIncPackages})(GuardTables);
+export default connect(mapStateToProps, { GetAllIncPackages })(GuardTables);
