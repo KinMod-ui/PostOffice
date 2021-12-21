@@ -27,7 +27,7 @@ const Login = ({ login, isAuthenticated, loading }) => {
   }
 
   return (
-    <div className="background">
+    <div className="backgroundlogin">
       <div className="container loginclass">
         <div className="row">
           <div className="col-md-4 offset-md-4 ">
