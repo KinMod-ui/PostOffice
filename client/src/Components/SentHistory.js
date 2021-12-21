@@ -32,7 +32,7 @@ export default function SentHistory() {
           </tbody>
         </table>
       </div>
-      ;
+      <div className="send-main"></div>
     </div>
   );
 }

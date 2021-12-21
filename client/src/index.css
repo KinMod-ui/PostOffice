@@ -18,10 +18,29 @@
 }
 
 .form-main {
-  background-image: url("https://images.unsplash.com/photo-1486520299386-6d106b22014b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80");
+  background-image: url("https://image.freepik.com/free-vector/wave-background_53876-115944.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
   padding-top: 40px;
+}
+
+.recieve-main {
+  background-image: url("https://image.freepik.com/free-vector/postman-giving-parcel-customer-post-office_74855-4811.jpg");
+  height: 50vh;
+  width: 100vh;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin-top: -50px;
+}
+
+.send-main {
+  background-image: url("https://image.freepik.com/free-vector/customer-using-mobile-app-tracking-order-delivery_74855-5229.jpg");
+  height: 50vh;
+  width: 100vh;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin-left: 50%;
+  margin-top: -50px;
 }
 
 .add {
