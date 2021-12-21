@@ -154,7 +154,7 @@ router.get('/' , auth , async (req , res) => {
 })
 
 // @route GET api/parcelInc/All
-// @desc Get all the incoming parcels of the current user
+// @desc Get all the incoming parcels of all the users
 // @access Private
 router.get('/All' , async (req , res) => {
     try{

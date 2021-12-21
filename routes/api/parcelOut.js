@@ -29,10 +29,6 @@ router.post('/' , [auth , [
     check('RecieverCity' , `Please enter Reciever's city`).not().isEmpty(),
     check('RecieverState' , `Please enter Reciever's State`).not().isEmpty(),
     check('RecieverPinCode' , `Please enter Reciever's PinCode`).not().isEmpty(),
-    check('RecieverEmail').custom((email) => {
-        // console.log(email.value);
-        return ((email.match(mailformat)))
-    }).withMessage(`Please enter a valid email-id`),
     check('RecieverMobile').custom((val) => {
         return (val.match(phoneno))
     }).withMessage('Please enter a valid phone number'),
@@ -68,7 +64,6 @@ router.post('/' , [auth , [
                     State : body.RecieverCity,
                     PinCode : body.RecieverPinCode
                 },
-                email : body.RecieverEmail,
                 MobNumber : body.RecieverMobile
             },
             PackageDescription : body.PackageDescription,
@@ -76,8 +71,8 @@ router.post('/' , [auth , [
             Price : body.Price,
             ExtraComments : body.ExtraComments,DispatchStatus : body.DispatchStatus
         })
-
-        const parcel = await newParcelOut.save();
+        console.log(body);
+        // const parcel = await newParcelOut.save();
 
         res.json(parcel);
 
@@ -117,6 +112,22 @@ router.get('/' , auth , async (req , res) => {
         console.error(err.message);
         if (err.kind === 'ObjectId'){
             return res.status(404).json({msg : "Parcel Not found"})
+        }
+        res.status(500).send("Server Error")
+    }
+})
+
+// @route GET api/parcelOut/All
+// @desc Get all the outgoing parcels of all the users
+// @access Private
+router.get('/All' , auth , async (req , res) => {
+    try{
+        const parcels = await ParcelIncoming.find().sort({ date: -1 });
+        res.json(parcels)
+    } catch(err){
+        console.error(err.message);
+        if (err.kind === 'ObjectId'){
+            return res.status(404).json({msg : "No Parcel exists"})
         }
         res.status(500).send("Server Error")
     }
@@ -207,7 +218,7 @@ router.post('/:id' , [auth ,
                     Line1 : body.SenderLine1,
                     Line2 : body.SenderLine2,
                     City : body.SenderCity,
-                    State : body.SenderCity,
+                    State : body.SenderState,
                     PinCode : body.SenderPinCode
                 },
                 email : body.SenderEmail,
@@ -219,7 +230,7 @@ router.post('/:id' , [auth ,
                     Line1 : body.RecieverLine1,
                     Line2 : body.RecieverLine2,
                     City : body.RecieverCity,
-                    State : body.RecieverCity,
+                    State : body.RecieverState,
                     PinCode : body.RecieverPinCode
                 },
                 email : body.RecieverEmail,

@@ -31,7 +31,6 @@ export const sendEmail = (e , formData) => async dispatch => {
     emailjs.send(emailKey.SERVICE_ID, emailKey.TEMPLATE_ID, templateParams)
     .then(function(response) {
         dispatch(setAlert("Email has been sent." , "success"))
-        history.push('/dashboard');
         window.location.reload();
     }, function(error) {
         console.log('FAILED...', error);
