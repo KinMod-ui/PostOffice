@@ -11,9 +11,12 @@ export default function OutgoingHandle() {
               <th scope="col">Sender's Name</th>
               <th scope="col">Sender's Address</th>
               <th scope="col">Sender's Number</th>
+              <th scope="col">Extra Comments</th>
               <th scope="col">Pick Status</th>
               <th scope="col">Dispatch Status</th>
               <th scope="col">Weight</th>
+              <th scope="col">Price</th>
+
               <th scope="col">Save Changes</th>
             </tr>
           </thead>
@@ -23,6 +26,7 @@ export default function OutgoingHandle() {
               <td>John Doe</td>
               <td>A1 32 Street, Jaipur,,Rajasthan, 101011</td>
               <td>0000000000</td>
+              <td>its a fragile order</td>
               <td>
                 <div className="form-check">
                   <input
@@ -83,6 +87,16 @@ export default function OutgoingHandle() {
                 />
               </td>
               <td>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Price"
+                  aria-label="Price"
+                  aria-describedby="basic-addon1"
+                />
+              </td>
+
+              <td>
                 <button type="button" className="btn bn632-hover bn26">
                   Save
                 </button>
@@ -93,6 +107,7 @@ export default function OutgoingHandle() {
               <td>Jane</td>
               <td>32, Salt Lake,Kolkata,301011</td>
               <td>1212121212</td>
+              <td>NA</td>
               <td>
                 <div className="form-check">
                   <input
@@ -152,6 +167,16 @@ export default function OutgoingHandle() {
                   aria-describedby="basic-addon1"
                 />
               </td>
+              <td>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="200"
+                  aria-label="Price"
+                  aria-describedby="basic-addon1"
+                />
+              </td>
+
               <td>
                 <button type="button" className="btn bn632-hover bn26">
                   Save

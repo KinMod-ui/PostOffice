@@ -12,6 +12,8 @@ export default function SentHistory() {
               <th scope="col">Address</th>
               <th scope="col">Dispatch Status</th>
               <th scope="col">Date</th>
+              <th scope="col">Price (Rupees) </th>
+              <th scope="col">Extra Comments</th>
             </tr>
           </thead>
           <tbody>
@@ -21,6 +23,8 @@ export default function SentHistory() {
               <td>a2, jaipur, chennai</td>
               <td>Dispached</td>
               <td>1/1/1 00:00:00</td>
+              <td>200</td>
+              <td>NA</td>
             </tr>
             <tr>
               <th scope="row">2</th>
@@ -28,6 +32,8 @@ export default function SentHistory() {
               <td>G21, LA, USA</td>
               <td>Not Dispached</td>
               <td>1/1/1 00:00:00</td>
+              <td>500</td>
+              <td>Fragile </td>
             </tr>
           </tbody>
         </table>

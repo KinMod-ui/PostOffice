@@ -11,18 +11,22 @@
 }
 
 .sendForm {
-  margin: auto;
-  width: 50%;
-  height: 80%;
+  margin-right: 10%;
+  width: 80%;
+  height: 100%;
   padding: 25px !important;
-  background-color: white;
 }
 
+.send-img {
+  height: 100px;
+  width: 100px;
+}
 .form-main {
-  background-image: url("https://image.freepik.com/free-vector/wave-background_53876-115944.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  padding-top: 40px;
+  height: 100vh;
+  background: linear-gradient(#fff, #fff) left/calc(100% - 100vh) 100% no-repeat,
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" ><path d="M0 64 L64 64 C60 50 56 46 29.33 50.83 C15.33 53.16 10.5 40.33 17.16 27.66 C20 11.66 16.33 6.5 0 0 Z"  fill="white"/></svg>')
+      right/auto 100% no-repeat,
+    linear-gradient(to right, #25aae1, #4481eb, #25aae1, #3f86ed);
 }
 
 .recieve-main {
