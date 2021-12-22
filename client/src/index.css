@@ -6,6 +6,11 @@
   background-repeat: no-repeat;
 }
 
+.regback {
+  background-color: white;
+  padding: 20px;
+}
+
 .navbtn {
   margin: 5px !important;
 }

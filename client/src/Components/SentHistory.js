@@ -1,11 +1,10 @@
 import React, { useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import ParcelOutItem from './packageOutgoing/packageOutItem'
+import ParcelOutItem from "./packageOutgoing/packageOutItem";
 import { GetOutPackages } from "../actions/packageOutgoing";
 
 const SentHistory = ({ GetOutPackages, package: { packages, loading } }) => {
-
   useEffect(() => {
     GetOutPackages();
   }, [GetOutPackages]);
@@ -19,6 +18,8 @@ const SentHistory = ({ GetOutPackages, package: { packages, loading } }) => {
               <th scope="col">#</th>
               <th scope="col">Sent To</th>
               <th scope="col">Address</th>
+
+              <th scope="col">Pick Status</th>
               <th scope="col">Dispatch Status</th>
               <th scope="col">Date</th>
               <th scope="col">Price (Rupees)</th>
@@ -41,7 +42,7 @@ const SentHistory = ({ GetOutPackages, package: { packages, loading } }) => {
       <div className="send-main"></div>
     </div>
   );
-}
+};
 
 SentHistory.propTypes = {
   GetOutPackages: PropTypes.func.isRequired,

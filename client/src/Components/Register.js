@@ -35,7 +35,7 @@ const Register = ({ isAuthenticated, register, setAlert }) => {
   return (
     <div className="backgroundlogin">
       <div className="container sendForm ">
-        <div className="row">
+        <div className="row regback">
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="mb-3">
               <label for="exampleInputEmail1" className="form-label">
