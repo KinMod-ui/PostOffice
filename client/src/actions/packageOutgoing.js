@@ -83,8 +83,12 @@ export const UpdateOutPackages = (formData) => async dispatch => {
     }
 }
 
+var scrollTop = function() {
+    window.scrollTo(0, 0);
+};
+
 // Add a new outgoing package
-export const AddOutPackages = (formData) => async dispatch => {
+export const AddOutPackages = (e , formData) => async dispatch => {
 
     try {
         const config = {
@@ -101,6 +105,7 @@ export const AddOutPackages = (formData) => async dispatch => {
             SenderState,
             SenderPinCode,
             SenderMobile,
+            SenderEmail,
             RecieverName,
             RecieverLine1,
             RecieverLine2,
@@ -116,7 +121,7 @@ export const AddOutPackages = (formData) => async dispatch => {
             DispatchStatus
         } = formData
         const PackageDescription = packdes;
-        const SenderEmail = email
+        
         
         const body = JSON.stringify({
             SenderName,
@@ -149,12 +154,22 @@ export const AddOutPackages = (formData) => async dispatch => {
         })
 
         dispatch(setAlert("Package Added" , 'success'));
+        
+        scrollTop();
+        setTimeout( function(){ window.location.reload(); } , 1000);
 
     } catch (err) {
-        dispatch(setAlert(err.response.statusText , 'danger'))
+
+        scrollTop();
+
+        err.response.data.errors.map(err => 
+            dispatch(setAlert(err , 'danger'))
+        )
+        
         dispatch({
             type : PACKAGE_ERROR,
             payload : {msg : err.response.statusText , status : err.response.status}
         })
+        e.target.textContent = "Add Package"
     }
 }

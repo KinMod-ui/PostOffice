@@ -15,9 +15,9 @@ const Addpackage = ({ AddIncPackages, sendEmail }) => {
 
   const onClick = (e) => {
     e.preventDefault();
-    AddIncPackages(formData);
-    console.log(e);
     e.target.textContent = "Adding Package...";
+    AddIncPackages(formData);
+    // console.log(e);
     sendEmail(e, formData);
   };
 

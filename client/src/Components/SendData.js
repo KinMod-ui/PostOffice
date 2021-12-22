@@ -58,9 +58,9 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
     e.preventDefault();
     formData.SenderEmail = user.email;
     formData.DispatchStatus = "Not Dispatched";
-    console.log(e, formData);
-    // AddOutPackages(formData);
+    // console.log(e, formData);
     e.target.textContent = "Adding Package...";
+    AddOutPackages(e , formData);
     // sendEmail(e, formData);
   };
 
@@ -252,8 +252,8 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
                         className="form-control"
                         id="comments"
                         aria-describedby="comments"
-                        name="Comments"
-                        value={RecieverMobile}
+                        name="ExtraComments"
+                        value={ExtraComments}
                         onChange={(e) => onChange(e)}
                       />
                     </div>

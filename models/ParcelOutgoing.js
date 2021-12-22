@@ -33,8 +33,7 @@ const DetailSchema = new Schema({
         required : true
     },
     email : {
-        type : String,
-        required : true
+        type : String
     },
     MobNumber : {
         type : String,
@@ -52,8 +51,7 @@ const ParcelOutgoingSchema = new Schema({
         required : true
     },
     PackageDescription : {
-        type : String,
-        required : true
+        type : String
     },
     PackageWeight : {
         type : String

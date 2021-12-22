@@ -17,7 +17,7 @@ const ParcelIncItem = ({pack : {PackageDescription , PickedBy , PickedAt} , cnt}
 }
 
 ParcelIncItem.propTypes = {
-    parcel : PropTypes.object.isRequired
+    pack : PropTypes.object.isRequired
 }
 
 export default connect()(ParcelIncItem)

@@ -30,18 +30,6 @@ const RecieveHistory = ({ GetIncPackages, package: { packages, loading } }) => {
             <td>Amazon Pack</td>
             <td>1/1/1 00:00:00</td>
             <td>John</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Flipkart</td>
-            <td>1/1/1 00:00:00</td>
-            <td>Doe</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Clothing Items</td>
-            <td></td>
-            <td>Jane</td>
           </tr> */}
           </tbody>
         </table>
