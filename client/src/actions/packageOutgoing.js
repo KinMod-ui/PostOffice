@@ -71,6 +71,8 @@ export const UpdateOutPackages = (formData) => async dispatch => {
             type : ADD_PACKAGE,
             payload : res.data
         })
+        scrollTop();
+        dispatch(setAlert("Changes have been made" , 'success'))
 
     } catch (err) {
         err.response.data.errors.map(err => 
