@@ -59,6 +59,10 @@ const ParcelOutgoingSchema = new Schema({
     Price : {
         type : Number
     },
+    Picked : {
+        type : String,
+        enum : ["Picked" , "Not Picked"]
+    },
     ExtraComments : {
         type : String
     },

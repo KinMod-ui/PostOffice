@@ -115,6 +115,7 @@ export const AddOutPackages = (e , formData) => async dispatch => {
             RecieverMobile,
             packdes,
             email,
+            Picked,
             PackageWeight,
             Price,
             ExtraComments,
@@ -142,6 +143,7 @@ export const AddOutPackages = (e , formData) => async dispatch => {
             PackageDescription,
             PackageWeight,
             Price,
+            Picked,
             ExtraComments,
             DispatchStatus
         });
