@@ -57,12 +57,11 @@ export const UpdateOutPackages = (formData) => async dispatch => {
             }
         }
 
-        const {id ,name , PackageDescription , username , PickedBy , PickedAt , current} = formData
-        const Status = current ? "Picked" : "Not Picked";
-        const body = JSON.stringify({name , PackageDescription , username , PickedBy , PickedAt , Status});
+        const {id , Picked, DispatchStatus , PackageWeight , Price } = formData
         
-        const res = await axios.post(`/api/parcelInc/parcel/${id}` , body , config)
-
+        const body = JSON.stringify({id , Picked , DispatchStatus , Picked , PackageWeight , Price });
+        
+        const res = await axios.post(`/api/parcelOut/${id}` , body , config)
         dispatch({
             type : DELETE_PACKAGE,
             payload : id
@@ -74,7 +73,9 @@ export const UpdateOutPackages = (formData) => async dispatch => {
         })
 
     } catch (err) {
-        dispatch(setAlert(err.response.statusText , 'danger'))
+        err.response.data.errors.map(err => 
+            dispatch(setAlert(err , 'danger'))
+        )
         dispatch({
             type : PACKAGE_ERROR,
             payload : {msg : err.response.statusText , status : err.response.status}

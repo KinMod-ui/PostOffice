@@ -54,7 +54,7 @@ const ParcelOutgoingSchema = new Schema({
         type : String
     },
     PackageWeight : {
-        type : String
+        type : Number
     },
     Price : {
         type : Number

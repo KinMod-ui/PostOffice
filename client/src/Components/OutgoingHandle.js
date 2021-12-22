@@ -1,6 +1,15 @@
-import React from "react";
+import React , {useEffect} from "react";
+import { GetAllOutPackages } from "../actions/packageOutgoing";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import OutgoingTableItems from './OutgoingTableItems'
 
-export default function OutgoingHandle() {
+const OutgoingHandle = ({ GetAllOutPackages, package: { packages, loading } }) => {
+
+  useEffect(() => {
+    GetAllOutPackages();
+  }, [GetAllOutPackages]);
+
   return (
     <div>
       <div className="tables">
@@ -21,8 +30,11 @@ export default function OutgoingHandle() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
+          {packages.map((pack, idx) => (
+                <OutgoingTableItems key={pack._id} pack={pack} cnt={idx + 1} />
+            ))}
+            {/* <tr> */}
+              {/* <th scope="row">1</th>
               <td>John Doe</td>
               <td>A1 32 Street, Jaipur,,Rajasthan, 101011</td>
               <td>0000000000</td>
@@ -181,11 +193,22 @@ export default function OutgoingHandle() {
                 <button type="button" className="btn bn632-hover bn26">
                   Save
                 </button>
-              </td>
-            </tr>
+              </td> */}
+            {/* </tr> */}
           </tbody>
         </table>
       </div>
     </div>
   );
 }
+
+OutgoingHandle.propTypes = {
+  GetAllOutPackages: PropTypes.func.isRequired,
+  package: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  package: state.packages
+});
+
+export default connect(mapStateToProps, { GetAllOutPackages })(OutgoingHandle);

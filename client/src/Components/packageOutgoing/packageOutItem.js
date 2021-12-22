@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import formatDate from "../../utils/formatDate";
 
 const ParcelOutItem = ({
-  pack: { RecieverDetails, DispatchStatus, ExtraComments, Price, date },
+  pack: { RecieverDetails, DispatchStatus, ExtraComments, Price, date , Picked },
   cnt,
 }) => {
   return (
@@ -15,7 +15,7 @@ const ParcelOutItem = ({
         {RecieverDetails.Address.Line1} , {RecieverDetails.Address.City} ,{" "}
         {RecieverDetails.Address.State}
       </td>
-      <td>{DispatchStatus}</td>
+      <td>{Picked}</td>
       <td>{DispatchStatus}</td>
       <td>{formatDate(date)}</td>
       <td>{Price ? Price : "-"}</td>
