@@ -28,6 +28,7 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
     packdes: "",
     PackageWeight: "",
     Price: "",
+    Picked: "",
     ExtraComments: "",
     DispatchStatus: "",
   });
@@ -58,6 +59,7 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
     e.preventDefault();
     formData.SenderEmail = user.email;
     formData.DispatchStatus = "Not Dispatched";
+    formData.Picked = "Not Picked";
     // console.log(e, formData);
     e.target.textContent = "Adding Package...";
     AddOutPackages(e , formData);
