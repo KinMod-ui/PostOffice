@@ -26,6 +26,7 @@
   height: 100px;
   width: 100px;
 }
+
 .form-main {
   height: 100vh;
   background: linear-gradient(#fff, #fff) left/calc(100% - 100vh) 100% no-repeat,

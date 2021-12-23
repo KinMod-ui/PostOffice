@@ -24,7 +24,7 @@ const ParcelOutItem = ({
       <td>{RecieverDetails && Picked}</td>
       <td>{RecieverDetails && DispatchStatus}</td>
       <td>{formatDate(RecieverDetails && date)}</td>
-      <td>{RecieverDetails && Price ?  Price : "-"}</td>
+      <td>{RecieverDetails && ((Price && Price >= 0) ?  Price : "-")}</td>
       <td>{RecieverDetails && ExtraComments}</td>
     </tr>
   );

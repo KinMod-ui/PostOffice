@@ -53,10 +53,10 @@ const OutgoingTableItems = ({ pack, cnt, UpdateOutPackages }) => {
   return (
     <tr>
       <th scope="row">{cnt}</th>
-      <td>{pack.SenderDetails.name}</td>
-              <td>{pack.SenderDetails.Address.Line1} , {pack.SenderDetails.Address.City} , {pack.SenderDetails.Address.State} , {pack.SenderDetails.Address.PinCode}</td>
-              <td>{pack.SenderDetails.MobNumber}</td>
-              <td>{pack.ExtraComments}</td>
+      <td>{pack.SenderDetails && pack.SenderDetails.name}</td>
+              <td>{pack.SenderDetails && pack.SenderDetails.Address.Line1} , {pack.SenderDetails && pack.SenderDetails.Address.City} , {pack.SenderDetails && pack.SenderDetails.Address.State} , {pack.SenderDetails && pack.SenderDetails.Address.PinCode}</td>
+              <td>{pack.SenderDetails && pack.SenderDetails.MobNumber}</td>
+              <td>{pack && pack.ExtraComments}</td>
               <td>
                 <div className="form-check">
                   <input
