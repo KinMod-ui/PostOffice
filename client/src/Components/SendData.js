@@ -60,9 +60,9 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
     formData.SenderEmail = user.email;
     formData.DispatchStatus = "Not Dispatched";
     formData.Picked = "Not Picked";
-    // console.log(e, formData);
+    console.log(e, formData);
     e.target.textContent = "Adding Package...";
-    AddOutPackages(e , formData);
+    // AddOutPackages(e , formData);
     // sendEmail(e, formData);
   };
 
@@ -117,7 +117,7 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
                         value={SenderLine2}
                         onChange={(e) => onChange(e)}
                       />
-                      <input
+                      {/* <input
                         type="textarea"
                         className="form-control add"
                         id="senderaddressCITY"
@@ -126,17 +126,47 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
                         name="SenderCity"
                         value={SenderCity}
                         onChange={(e) => onChange(e)}
-                      />
-                      <input
-                        type="textarea"
-                        className="form-control add"
-                        id="senderaddressSTATE"
-                        aria-describedby="senderAddressSTATE"
-                        placeholder="State"
-                        name="SenderState"
-                        value={SenderState}
-                        onChange={(e) => onChange(e)}
-                      />
+                      /> */}
+                      
+                      <select className="dropbtn" id = "dropdown" name = "SenderState" value={SenderState} onChange={e => onChange(e)}>
+                      <option className = "dropdown-content" value ="State">Pick a State</option>
+                      <option className = "dropdown-content" value ="Andhra Pradesh">Andhra Pradesh</option>
+                      <option className = "dropdown-content" value ="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                      <option className = "dropdown-content" value ="Arunachal Pradesh">Arunachal Pradesh</option>
+                      <option className = "dropdown-content" value ="Assam">Assam</option>
+                      <option className = "dropdown-content" value ="Bihar">Bihar</option>
+                      <option className = "dropdown-content" value ="Chandigarh">Chandigarh</option>
+                      <option className = "dropdown-content" value ="Chhattisgarh">Chhattisgarh</option>
+                      <option className = "dropdown-content" value ="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                      <option className = "dropdown-content" value ="Daman and Diu">Daman and Diu</option>
+                      <option className = "dropdown-content" value ="Delhi">Delhi</option>
+                      <option className = "dropdown-content" value ="Lakshadweep">Lakshadweep</option>
+                      <option className = "dropdown-content" value ="Puducherry">Puducherry</option>
+                      <option className = "dropdown-content" value ="Goa">Goa</option>
+                      <option className = "dropdown-content" value ="Gujarat">Gujarat</option>
+                      <option className = "dropdown-content" value ="Haryana">Haryana</option>
+                      <option className = "dropdown-content" value ="Himachal Pradesh">Himachal Pradesh</option>
+                      <option className = "dropdown-content" value ="Jammu and Kashmir">Jammu and Kashmir</option>
+                      <option className = "dropdown-content" value ="Jharkhand">Jharkhand</option>
+                      <option className = "dropdown-content" value ="Karnataka">Karnataka</option>
+                      <option className = "dropdown-content" value ="Kerala">Kerala</option>
+                      <option className = "dropdown-content" value ="Madhya Pradesh">Madhya Pradesh</option>
+                      <option className = "dropdown-content" value ="Maharashtra">Maharashtra</option>
+                      <option className = "dropdown-content" value ="Manipur">Manipur</option>
+                      <option className = "dropdown-content" value ="Meghalaya">Meghalaya</option>
+                      <option className = "dropdown-content" value ="Mizoram">Mizoram</option>
+                      <option className = "dropdown-content" value ="Nagaland">Nagaland</option>
+                      <option className = "dropdown-content" value ="Odisha">Odisha</option>
+                      <option className = "dropdown-content" value ="Punjab">Punjab</option>
+                      <option className = "dropdown-content" value ="Rajasthan">Rajasthan</option>
+                      <option className = "dropdown-content" value ="Sikkim">Sikkim</option>
+                      <option className = "dropdown-content" value ="Tamil Nadu">Tamil Nadu</option>
+                      <option className = "dropdown-content" value ="Telangana">Telangana</option>
+                      <option className = "dropdown-content" value ="Tripura">Tripura</option>
+                      <option className = "dropdown-content" value ="Uttar Pradesh">Uttar Pradesh</option>
+                      <option className = "dropdown-content" value ="Uttarakhand">Uttarakhand</option>
+                      <option className = "dropdown-content" value ="West Bengal">West Bengal</option>
+                      </select>
                       <input
                         type="text"
                         className="form-control add"
@@ -210,7 +240,7 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
                         value={RecieverCity}
                         onChange={(e) => onChange(e)}
                       />
-                      <input
+                      {/* <input
                         type="textarea"
                         className="form-control add"
                         id="recieveraddressSTATE"
@@ -219,7 +249,46 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
                         name="RecieverState"
                         value={RecieverState}
                         onChange={(e) => onChange(e)}
-                      />
+                      /> */}
+                      <select id = "dropdown" name = "RecieverState" value={RecieverState} onChange={e => onChange(e)}>
+                      <option value="State">Pick a State</option>
+                      <option value="Andhra Pradesh">Andhra Pradesh</option>
+                      <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                      <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                      <option value="Assam">Assam</option>
+                      <option value="Bihar">Bihar</option>
+                      <option value="Chandigarh">Chandigarh</option>
+                      <option value="Chhattisgarh">Chhattisgarh</option>
+                      <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                      <option value="Daman and Diu">Daman and Diu</option>
+                      <option value="Delhi">Delhi</option>
+                      <option value="Lakshadweep">Lakshadweep</option>
+                      <option value="Puducherry">Puducherry</option>
+                      <option value="Goa">Goa</option>
+                      <option value="Gujarat">Gujarat</option>
+                      <option value="Haryana">Haryana</option>
+                      <option value="Himachal Pradesh">Himachal Pradesh</option>
+                      <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                      <option value="Jharkhand">Jharkhand</option>
+                      <option value="Karnataka">Karnataka</option>
+                      <option value="Kerala">Kerala</option>
+                      <option value="Madhya Pradesh">Madhya Pradesh</option>
+                      <option value="Maharashtra">Maharashtra</option>
+                      <option value="Manipur">Manipur</option>
+                      <option value="Meghalaya">Meghalaya</option>
+                      <option value="Mizoram">Mizoram</option>
+                      <option value="Nagaland">Nagaland</option>
+                      <option value="Odisha">Odisha</option>
+                      <option value="Punjab">Punjab</option>
+                      <option value="Rajasthan">Rajasthan</option>
+                      <option value="Sikkim">Sikkim</option>
+                      <option value="Tamil Nadu">Tamil Nadu</option>
+                      <option value="Telangana">Telangana</option>
+                      <option value="Tripura">Tripura</option>
+                      <option value="Uttar Pradesh">Uttar Pradesh</option>
+                      <option value="Uttarakhand">Uttarakhand</option>
+                      <option value="West Bengal">West Bengal</option>
+                      </select>
                       <input
                         type="text"
                         className="form-control add"
