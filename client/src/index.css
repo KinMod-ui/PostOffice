@@ -58,7 +58,8 @@
   background-image: url("https://image.freepik.com/free-vector/two-loaders-carrying-big-carton-box-couriers-scooter_74855-14186.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
-  padding-top: 40px;
+  padding-top: 10px;
+  font-weight: bold;
 }
 
 .add {
