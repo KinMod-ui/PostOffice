@@ -4,10 +4,73 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { AddOutPackages } from "../actions/packageOutgoing";
 
+const data = {
+  countries: [
+    
+    {
+      name: "India",
+      states: [
+        {name : "Andaman and Nicobar Islands" , cities : ["Port Blair*"]},
+{name : "Andhra Pradesh" , cities : ["Adoni","Amalapuram","Anakapalle","Anantapur","Bapatla","Bheemunipatnam","Bhimavaram","Bobbili","Chilakaluripet","Chirala","Chittoor","Dharmavaram","Eluru","Gooty","Gudivada","Gudur","Guntakal","Guntur","Hindupur","Jaggaiahpet","Jammalamadugu","Kadapa","Kadiri","Kakinada","Kandukur","Kavali","Kovvur","Kurnool","Macherla","Machilipatnam","Madanapalle","Mandapeta","Markapur","Nagari","Naidupet","Nandyal","Narasapuram","Narasaraopet","Narsipatnam","Nellore","Nidadavole","Nuzvid","Ongole","Palacole","Palasa Kasibugga","Parvathipuram","Pedana","Peddapuram","Pithapuram","Ponnur","Proddatur","Punganur","Puttur","Rajahmundry","Rajam","Rajampet","Ramachandrapuram","Rayachoti","Rayadurg","Renigunta","Repalle","Salur","Samalkot","Sattenapalle","Srikakulam","Srikalahasti","Srisailam Project (Right Flank Colony) Township","Sullurpeta","Tadepalligudem","Tadpatri","Tanuku","Tenali","Tirupati","Tiruvuru","Tuni","Uravakonda","Venkatagiri","Vijayawada","Vinukonda","Visakhapatnam","Vizianagaram","Yemmiganur","Yerraguntla"]},
+{name : "Arunachal Pradesh" , cities : ["Naharlagun","Pasighat"]},
+{name : "Assam" , cities : ["Barpeta","Bongaigaon City","Dhubri","Dibrugarh","Diphu","Goalpara","Guwahati","Jorhat","Karimganj","Lanka","Lumding","Mangaldoi","Mankachar","Margherita","Mariani","Marigaon","Nagaon","Nalbari","North Lakhimpur","Rangia","Sibsagar","Silapathar","Silchar","Tezpur","Tinsukia"]},
+{name : "Bihar" , cities : ["Araria","Arrah","Arwal","Asarganj","Aurangabad","Bagaha","Barh","Begusarai","Bettiah","Bhabua","Bhagalpur","Buxar","Chhapra","Darbhanga","Dehri-on-Sone","Dumraon","Forbesganj","Gaya","Gopalganj","Hajipur","Jamalpur","Jamui","Jehanabad","Katihar","Kishanganj","Lakhisarai","Lalganj","Madhepura","Madhubani","Maharajganj","Mahnar Bazar","Makhdumpur","Maner","Manihari","Marhaura","Masaurhi","Mirganj","Mokameh","Motihari","Motipur","Munger","Murliganj","Muzaffarpur","Narkatiaganj","Naugachhia","Nawada","Nokha","Patna*","Piro","Purnia","Rafiganj","Rajgir","Ramnagar","Raxaul Bazar","Revelganj","Rosera","Saharsa","Samastipur","Sasaram","Sheikhpura","Sheohar","Sherghati","Silao","Sitamarhi","Siwan","Sonepur","Sugauli","Sultanganj","Supaul","Warisaliganj"]},
+{name : "Chandigarh" , cities : ["Chandigarh*"]},
+{name : "Chhattisgarh" , cities : ["Ambikapur","Bhatapara","Bhilai Nagar","Bilaspur","Chirmiri","Dalli-Rajhara","Dhamtari","Durg","Jagdalpur","Korba","Mahasamund","Manendragarh","Mungeli","Naila Janjgir","Raigarh","Raipur*","Rajnandgaon","Sakti","Tilda Newra"]},
+{name : "Dadra and Nagar Haveli" , cities : ["Silvassa*"]},
+{name : "Delhi" , cities : ["Delhi","New Delhi*"]},
+{name : "Goa" , cities : ["Mapusa","Margao","Marmagao","Panaji*"]},
+{name : "Gujarat" , cities : ["Adalaj","Ahmedabad","Amreli","Anand","Anjar","Ankleshwar","Bharuch","Bhavnagar","Bhuj","Chhapra","Deesa","Dhoraji","Godhra","Jamnagar","Kadi","Kapadvanj","Keshod","Khambhat","Lathi","Limbdi","Lunawada","Mahesana","Mahuva","Manavadar","Mandvi","Mangrol","Mansa","Mahemdabad","Modasa","Morvi","Nadiad","Navsari","Padra","Palanpur","Palitana","Pardi","Patan","Petlad","Porbandar","Radhanpur","Rajkot","Rajpipla","Rajula","Ranavav","Rapar","Salaya","Sanand","Savarkundla","Sidhpur","Sihor","Songadh","Surat","Talaja","Thangadh","Tharad","Umbergaon","Umreth","Una","Unjha","Upleta","Vadnagar","Vadodara","Valsad","Vapi","Vapi","Veraval","Vijapur","Viramgam","Visnagar","Vyara","Wadhwan","Wankaner"]},
+{name : "Haryana" , cities : ["Bahadurgarh","Bhiwani","Charkhi Dadri","Faridabad","Fatehabad","Gohana","Gurgaon","Hansi","Hisar","Jind","Kaithal","Karnal","Ladwa","Mahendragarh","Mandi Dabwali","Narnaul","Narwana","Palwal","Panchkula","Panipat","Pehowa","Pinjore","Rania","Ratia","Rewari","Rohtak","Safidon","Samalkha","Sarsod","Shahbad","Sirsa","Sohna","Sonipat","Taraori","Thanesar","Tohana","Yamunanagar"]},
+{name : "Himachal Pradesh" , cities : ["Mandi","Nahan","Palampur","Shimla*","Solan","Sundarnagar"]},
+{name : "Jammu and Kashmir" , cities : ["Anantnag","Baramula","Jammu","Kathua","Punch","Rajauri","Sopore","Srinagar*","Udhampur"]},
+{name : "Jharkhand" , cities : ["Adityapur","Bokaro Steel City","Chaibasa","Chatra","Chirkunda","Medininagar (Daltonganj)","Deoghar","Dhanbad","Dumka","Giridih","Gumia","Hazaribag","Jamshedpur","Jhumri Tilaiya","Lohardaga","Madhupur","Mihijam","Musabani","Pakaur","Patratu","Phusro","Ramgarh","Ranchi*","Sahibganj","Saunda","Simdega","Tenu dam-cum-Kathhara"]},
+{name : "Karnataka" , cities : ["Adyar","Afzalpur","Arsikere","Athni","Bengaluru","Belagavi","Ballari","Chikkamagaluru","Davanagere","Gokak","Hubli-Dharwad","Karwar","Kolar","Lakshmeshwar","Lingsugur","Maddur","Madhugiri","Madikeri","Magadi","Mahalingapura","Malavalli","Malur","Mandya","Mangaluru","Manvi","Mudalagi","Mudabidri","Muddebihal","Mudhol","Mulbagal","Mundargi","Nanjangud","Nargund","Navalgund","Nelamangala","Pavagada","Piriyapatna","Puttur","Rabkavi Banhatti","Raayachuru","Ranebennuru","Ramanagaram","Ramdurg","Ranibennur","Robertson Pet","Ron","Sadalagi","Sagara","Sakaleshapura","Sindagi","Sanduru","Sankeshwara","Saundatti-Yellamma","Savanur","Sedam","Shahabad","Shahpur","Shiggaon","Shikaripur","Shivamogga","Surapura","Shrirangapattana","Sidlaghatta","Sindhagi","Sindhnur","Sira","Sirsi","Siruguppa","Srinivaspur","Tarikere","Tekkalakote","Terdal","Talikota","Tiptur","Tumkur","Udupi","Vijayapura","Wadi","Yadgir"]},
+{name : "Karnatka" , cities : ["Mysore"]},
+{name : "Kerala" , cities : ["Adoor","Alappuzha","Attingal","Chalakudy","Changanassery","Cherthala","Chittur-Thathamangalam","Guruvayoor","Kanhangad","Kannur","Kasaragod","Kayamkulam","Kochi","Kodungallur","Kollam","Kottayam","Kozhikode","Kunnamkulam","Malappuram","Mattannur","Mavelikkara","Mavoor","Muvattupuzha","Nedumangad","Neyyattinkara","Nilambur","Ottappalam","Palai","Palakkad","Panamattom","Panniyannur","Pappinisseri","Paravoor","Pathanamthitta","Peringathur","Perinthalmanna","Perumbavoor","Ponnani","Punalur","Puthuppally","Koyilandy","Shoranur","Taliparamba","Thiruvalla","Thiruvananthapuram","Thodupuzha","Thrissur","Tirur","Vaikom","Varkala","Vatakara"]},
+{name : "Madhya Pradesh" , cities : ["Alirajpur","Ashok Nagar","Balaghat","Bhopal","Ganjbasoda","Gwalior","Indore","Itarsi","Jabalpur","Lahar","Maharajpur","Mahidpur","Maihar","Malaj Khand","Manasa","Manawar","Mandideep","Mandla","Mandsaur","Mauganj","Mhow Cantonment","Mhowgaon","Morena","Multai","Mundi","Murwara (Katni)","Nagda","Nainpur","Narsinghgarh","Narsinghgarh","Neemuch","Nepanagar","Niwari","Nowgong","Nowrozabad (Khodargama)","Pachore","Pali","Panagar","Pandhurna","Panna","Pasan","Pipariya","Pithampur","Porsa","Prithvipur","Raghogarh-Vijaypur","Rahatgarh","Raisen","Rajgarh","Ratlam","Rau","Rehli","Rewa","Sabalgarh","Sagar","Sanawad","Sarangpur","Sarni","Satna","Sausar","Sehore","Sendhwa","Seoni","Seoni-Malwa","Shahdol","Shajapur","Shamgarh","Sheopur","Shivpuri","Shujalpur","Sidhi","Sihora","Singrauli","Sironj","Sohagpur","Tarana","Tikamgarh","Ujjain","Umaria","Vidisha","Vijaypur","Wara Seoni"]},
+{name : "Maharashtra" , cities : ["[[]]","Ahmednagar","Akola","Akot","Amalner","Ambejogai","Amravati","Anjangaon","Arvi","Aurangabad","Bhiwandi","Dhule","Kalyan-Dombivali","Ichalkaranji","Kalyan-Dombivali","Karjat","Latur","Loha","Lonar","Lonavla","Mahad","Malegaon","Malkapur","Mangalvedhe","Mangrulpir","Manjlegaon","Manmad","Manwath","Mehkar","Mhaswad","Mira-Bhayandar","Morshi","Mukhed","Mul","Greater Mumbai*","Murtijapur","Nagpur","Nanded-Waghala","Nandgaon","Nandura","Nandurbar","Narkhed","Nashik","Navi Mumbai","Nawapur","Nilanga","Osmanabad","Ozar","Pachora","Paithan","Palghar","Pandharkaoda","Pandharpur","Panvel","Parbhani","Parli","Partur","Pathardi","Pathri","Patur","Pauni","Pen","Phaltan","Pulgaon","Pune","Purna","Pusad","Rahuri","Rajura","Ramtek","Ratnagiri","Raver","Risod","Sailu","Sangamner","Sangli","Sangole","Sasvad","Satana","Satara","Savner","Sawantwadi","Shahade","Shegaon","Shendurjana","Shirdi","Shirpur-Warwade","Shirur","Shrigonda","Shrirampur","Sillod","Sinnar","Solapur","Soyagaon","Talegaon Dabhade","Talode","Tasgaon","Thane","Tirora","Tuljapur","Tumsar","Uchgaon","Udgir","Umarga","Umarkhed","Umred","Uran","Uran Islampur","Vadgaon Kasba","Vaijapur","Vasai-Virar","Vita","Wadgaon Road","Wai","Wani","Wardha","Warora","Warud","Washim","Yavatmal","Yawal","Yevla"]},
+{name : "Manipur" , cities : ["Imphal*","Lilong","Mayang Imphal","Thoubal"]},
+{name : "Meghalaya" , cities : ["Nongstoin","Shillong*","Tura"]},
+{name : "Mizoram" , cities : ["Aizawl","Lunglei","Saiha"]},
+{name : "Nagaland" , cities : ["Dimapur","Kohima*","Mokokchung","Tuensang","Wokha","Zunheboto"]},
+{name : "Odisha" , cities : ["Balangir","Baleshwar Town","Barbil","Bargarh","Baripada Town","Bhadrak","Bhawanipatna","Bhubaneswar*","Brahmapur","Byasanagar","Cuttack","Dhenkanal","Jatani","Jharsuguda","Kendrapara","Kendujhar","Malkangiri","Nabarangapur","Paradip","Parlakhemundi","Pattamundai","Phulabani","Puri","Rairangpur","Rajagangapur","Raurkela","Rayagada","Sambalpur","Soro","Sunabeda","Sundargarh","Talcher","Tarbha","Titlagarh"]},
+{name : "Puducherry" , cities : ["Karaikal","Mahe","Pondicherry*","Yanam"]},
+{name : "Punjab" , cities : ["Amritsar","Barnala","Batala","Bathinda","Dhuri","Faridkot","Fazilka","Firozpur","Firozpur Cantt.","Gobindgarh","Gurdaspur","Hoshiarpur","Jagraon","Jalandhar Cantt.","Jalandhar","Kapurthala","Khanna","Kharar","Kot Kapura","Longowal","Ludhiana","Malerkotla","Malout","Mansa","Moga","Mohali","Morinda, India","Mukerian","Muktsar","Nabha","Nakodar","Nangal","Nawanshahr","Pathankot","Patiala","Pattran","Patti","Phagwara","Phillaur","Qadian","Raikot","Rajpura","Rampura Phul","Rupnagar","Samana","Sangrur","Sirhind Fatehgarh Sahib","Sujanpur","Sunam","Talwara","Tarn Taran","Urmar Tanda","Zira","Zirakpur"]},
+{name : "Rajasthan" , cities : ["Ajmer","Alwar","Bikaner","Bharatpur","Bhilwara","Jaipur*","Jodhpur","Lachhmangarh","Ladnu","Lakheri","Lalsot","Losal","Makrana","Malpura","Mandalgarh","Mandawa","Mangrol","Merta City","Mount Abu","Nadbai","Nagar","Nagaur","Nasirabad","Nathdwara","Neem-Ka-Thana","Nimbahera","Nohar","Nokha","Pali","Phalodi","Phulera","Pilani","Pilibanga","Pindwara","Pipar City","Prantij","Pratapgarh","Raisinghnagar","Rajakhera","Rajaldesar","Rajgarh (Alwar)","Rajgarh (Churu)","Rajsamand","Ramganj Mandi","Ramngarh","Ratangarh","Rawatbhata","Rawatsar","Reengus","Sadri","Sadulshahar","Sadulpur","Sagwara","Sambhar","Sanchore","Sangaria","Sardarshahar","Sawai Madhopur","Shahpura","Shahpura","Sheoganj","Sikar","Sirohi","Sojat","Sri Madhopur","Sujangarh","Sumerpur","Suratgarh","Taranagar","Todabhim","Todaraisingh","Tonk","Udaipur","Udaipurwati","Vijainagar, Ajmer"]},
+{name : "Tamil Nadu" , cities : ["Arakkonam","Aruppukkottai","Chennai*","Coimbatore","Erode","Gobichettipalayam","Kancheepuram","Karur","Lalgudi","Madurai","Manachanallur","Nagapattinam","Nagercoil","Namagiripettai","Namakkal","Nandivaram-Guduvancheri","Nanjikottai","Natham","Nellikuppam","Neyveli (TS)","O' Valley","Oddanchatram","P.N.Patti","Pacode","Padmanabhapuram","Palani","Palladam","Pallapatti","Pallikonda","Panagudi","Panruti","Paramakudi","Parangipettai","Pattukkottai","Perambalur","Peravurani","Periyakulam","Periyasemur","Pernampattu","Pollachi","Polur","Ponneri","Pudukkottai","Pudupattinam","Puliyankudi","Punjaipugalur","Ranipet","Rajapalayam","Ramanathapuram","Rameshwaram","Rasipuram","Salem","Sankarankoil","Sankari","Sathyamangalam","Sattur","Shenkottai","Sholavandan","Sholingur","Sirkali","Sivaganga","Sivagiri","Sivakasi","Srivilliputhur","Surandai","Suriyampalayam","Tenkasi","Thammampatti","Thanjavur","Tharamangalam","Tharangambadi","Theni Allinagaram","Thirumangalam","Thirupuvanam","Thiruthuraipoondi","Thiruvallur","Thiruvarur","Thuraiyur","Tindivanam","Tiruchendur","Tiruchengode","Tiruchirappalli","Tirukalukundram","Tirukkoyilur","Tirunelveli","Tirupathur","Tirupathur","Tiruppur","Tiruttani","Tiruvannamalai","Tiruvethipuram","Tittakudi","Udhagamandalam","Udumalaipettai","Unnamalaikadai","Usilampatti","Uthamapalayam","Uthiramerur","Vadakkuvalliyur","Vadalur","Vadipatti","Valparai","Vandavasi","Vaniyambadi","Vedaranyam","Vellakoil","Vellore","Vikramasingapuram","Viluppuram","Virudhachalam","Virudhunagar","Viswanatham"]},
+{name : "Telangana" , cities : ["Adilabad","Bellampalle","Bhadrachalam","Bhainsa","Bhongir","Bodhan","Farooqnagar","Gadwal","Hyderabad*","Jagtial","Jangaon","Kagaznagar","Kamareddy","Karimnagar","Khammam","Koratla","Kothagudem","Kyathampalle","Mahbubnagar","Mancherial","Mandamarri","Manuguru","Medak","Miryalaguda","Nagarkurnool","Narayanpet","Nirmal","Nizamabad","Palwancha","Ramagundam","Sadasivpet","Sangareddy","Siddipet","Sircilla","Suryapet","Tandur","Vikarabad","Wanaparthy","Warangal","Yellandu"]},
+{name : "Tripura" , cities : ["Agartala*","Belonia","Dharmanagar","Kailasahar","Khowai","Pratapgarh","Udaipur"]},
+{name : "Uttar Pradesh" , cities : ["Achhnera","Agra","Aligarh","Allahabad","Amroha","Azamgarh","Bahraich","Chandausi","Etawah","Firozabad","Fatehpur Sikri","Hapur","Hardoi *","Jhansi","Kalpi","Kanpur","Khair","Laharpur","Lakhimpur","Lal Gopalganj Nindaura","Lalitpur","Lalganj","Lar","Loni","Lucknow*","Mathura","Meerut","Modinagar","Moradabad","Nagina","Najibabad","Nakur","Nanpara","Naraura","Naugawan Sadat","Nautanwa","Nawabganj","Nehtaur","Niwai","Noida","Noorpur","Obra","Orai","Padrauna","Palia Kalan","Parasi","Phulpur","Pihani","Pilibhit","Pilkhuwa","Powayan","Pukhrayan","Puranpur","Purquazi","Purwa","Rae Bareli","Rampur","Rampur Maniharan","Rampur Maniharan","Rasra","Rath","Renukoot","Reoti","Robertsganj","Rudauli","Rudrapur","Sadabad","Safipur","Saharanpur","Sahaspur","Sahaswan","Sahawar","Sahjanwa","Saidpur","Sambhal","Samdhan","Samthar","Sandi","Sandila","Sardhana","Seohara","Shahabad, Hardoi","Shahabad, Rampur","Shahganj","Shahjahanpur","Shamli","Shamsabad, Agra","Shamsabad, Farrukhabad","Sherkot","Shikarpur, Bulandshahr","Shikohabad","Shishgarh","Siana","Sikanderpur","Sikandra Rao","Sikandrabad","Sirsaganj","Sirsi","Sitapur","Soron","Suar","Sultanpur","Sumerpur","Tanda","Thakurdwara","Thana Bhawan","Tilhar","Tirwaganj","Tulsipur","Tundla","Ujhani","Unnao","Utraula","Varanasi","Vrindavan","Warhapur","Zaidpur","Zamania"]},
+{name : "Uttarakhand" , cities : ["Bageshwar","Dehradun","Haldwani-cum-Kathgodam","Hardwar","Kashipur","Manglaur","Mussoorie","Nagla","Nainital","Pauri","Pithoragarh","Ramnagar","Rishikesh","Roorkee","Rudrapur","Sitarganj","Srinagar","Tehri"]},
+{name : "West Bengal" , cities : ["Adra","Alipurduar","Arambagh","Asansol","Baharampur","Balurghat","Bankura","Darjiling","English Bazar","Gangarampur","Habra","Hugli-Chinsurah","Jalpaiguri","Jhargram","Kalimpong","Kharagpur","Kolkata","Mainaguri","Malda","Mathabhanga","Medinipur","Memari","Monoharpur","Murshidabad","Nabadwip","Naihati","Panchla","Pandua","Paschim Punropara","Purulia","Raghunathpur","Raghunathganj","Raiganj","Rampurhat","Ranaghat","Sainthia","Santipur","Siliguri","Sonamukhi","Srirampore","Suri","Taki","Tamluk","Tarakeswar"]},
+      ]
+    }
+  ]
+};
+
 const SendData = ({ isLoading, AddOutPackages, user }) => {
+
+  const selectedCountry = "India"
+  const [selectedStateSender, setSelectedStateSender] = React.useState();
+  const [selectedCitySender, setSelectedCitySender] = React.useState();
+  const [selectedStateReciever, setSelectedStateReciever] = React.useState();
+  const [selectedCityReciever, setSelectedCityReciever] = React.useState();
+
+  const availableState = data.countries.find((c) => c.name === selectedCountry);
+  const availableCitiesSender = availableState?.states?.find(
+    (s) => s.name === selectedStateSender
+  );
+
+  const availableCitiesReciever = availableState?.states?.find(
+    (s) => s.name === selectedStateReciever
+  );
+
   if (isLoading) {
     <Spinner />;
   }
+
+
 
   const [formData, setFormData] = useState({
     SenderName: " ",
@@ -60,7 +123,11 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
     formData.SenderEmail = user.email;
     formData.DispatchStatus = "Not Dispatched";
     formData.Picked = "Not Picked";
-    console.log(e, formData);
+    formData.RecieverState = selectedStateReciever
+    formData.SenderState = selectedStateSender
+    formData.SenderCity = selectedCitySender
+    formData.RecieverCity = selectedCityReciever
+    console.log(e, formData );
     e.target.textContent = "Adding Package...";
     // AddOutPackages(e , formData);
     // sendEmail(e, formData);
@@ -128,45 +195,58 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
                         onChange={(e) => onChange(e)}
                       /> */}
                       
-                      <select className="dropbtn" id = "dropdown" name = "SenderState" value={SenderState} onChange={e => onChange(e)}>
-                      <option className = "dropdown-content" value ="State">Pick a State</option>
-                      <option className = "dropdown-content" value ="Andhra Pradesh">Andhra Pradesh</option>
-                      <option className = "dropdown-content" value ="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                      <option className = "dropdown-content" value ="Arunachal Pradesh">Arunachal Pradesh</option>
-                      <option className = "dropdown-content" value ="Assam">Assam</option>
-                      <option className = "dropdown-content" value ="Bihar">Bihar</option>
-                      <option className = "dropdown-content" value ="Chandigarh">Chandigarh</option>
-                      <option className = "dropdown-content" value ="Chhattisgarh">Chhattisgarh</option>
-                      <option className = "dropdown-content" value ="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-                      <option className = "dropdown-content" value ="Daman and Diu">Daman and Diu</option>
-                      <option className = "dropdown-content" value ="Delhi">Delhi</option>
-                      <option className = "dropdown-content" value ="Lakshadweep">Lakshadweep</option>
-                      <option className = "dropdown-content" value ="Puducherry">Puducherry</option>
-                      <option className = "dropdown-content" value ="Goa">Goa</option>
-                      <option className = "dropdown-content" value ="Gujarat">Gujarat</option>
-                      <option className = "dropdown-content" value ="Haryana">Haryana</option>
-                      <option className = "dropdown-content" value ="Himachal Pradesh">Himachal Pradesh</option>
-                      <option className = "dropdown-content" value ="Jammu and Kashmir">Jammu and Kashmir</option>
-                      <option className = "dropdown-content" value ="Jharkhand">Jharkhand</option>
-                      <option className = "dropdown-content" value ="Karnataka">Karnataka</option>
-                      <option className = "dropdown-content" value ="Kerala">Kerala</option>
-                      <option className = "dropdown-content" value ="Madhya Pradesh">Madhya Pradesh</option>
-                      <option className = "dropdown-content" value ="Maharashtra">Maharashtra</option>
-                      <option className = "dropdown-content" value ="Manipur">Manipur</option>
-                      <option className = "dropdown-content" value ="Meghalaya">Meghalaya</option>
-                      <option className = "dropdown-content" value ="Mizoram">Mizoram</option>
-                      <option className = "dropdown-content" value ="Nagaland">Nagaland</option>
-                      <option className = "dropdown-content" value ="Odisha">Odisha</option>
-                      <option className = "dropdown-content" value ="Punjab">Punjab</option>
-                      <option className = "dropdown-content" value ="Rajasthan">Rajasthan</option>
-                      <option className = "dropdown-content" value ="Sikkim">Sikkim</option>
-                      <option className = "dropdown-content" value ="Tamil Nadu">Tamil Nadu</option>
-                      <option className = "dropdown-content" value ="Telangana">Telangana</option>
-                      <option className = "dropdown-content" value ="Tripura">Tripura</option>
-                      <option className = "dropdown-content" value ="Uttar Pradesh">Uttar Pradesh</option>
-                      <option className = "dropdown-content" value ="Uttarakhand">Uttarakhand</option>
-                      <option className = "dropdown-content" value ="West Bengal">West Bengal</option>
-                      </select>
+        {/* <select
+          placeholder="Country"
+          value={selectedCountry}
+          onChange={(e) => setSelectedCountry(e.target.value)}
+        >
+          <option>--Choose Country--</option>
+          {data.countries.map((value, key) => {
+            return (
+              <option value={value.name} key={key}>
+                {value.name}
+              </option>
+            );
+          })}
+        </select> */}
+      </div>
+
+      <div>
+        <label>State</label>
+        <select
+          placeholder="State"
+          value={selectedStateSender}
+          onChange={(e) => setSelectedStateSender(e.target.value)}
+        >
+          <option>--Choose State--</option>
+          {availableState?.states.map((e, key) => {
+            return (
+              <option value={e.name} key={key}>
+                {e.name}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+
+      <div>
+        <label>City</label>
+        <select
+          placeholder="City"
+          value={selectedCitySender}
+          onChange={(e) => setSelectedCitySender(e.target.value)}
+        >
+          <option>--Choose City--</option>
+          {availableCitiesSender?.cities.map((e, key) => {
+            return (
+              <option value={e.name} key={key}>
+                {e}
+              </option>
+            );
+          })}
+        </select>
+
+
                       <input
                         type="text"
                         className="form-control add"
@@ -240,6 +320,43 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
                         value={RecieverCity}
                         onChange={(e) => onChange(e)}
                       />
+
+<div>
+        <label>State</label>
+        <select
+          placeholder="State"
+          value={selectedStateReciever}
+          onChange={(e) => setSelectedStateReciever(e.target.value)}
+        >
+          <option>--Choose State--</option>
+          {availableState?.states.map((e, key) => {
+            return (
+              <option value={e.name} key={key}>
+                {e.name}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+
+      <div>
+        <label>City</label>
+        <select
+          placeholder="City"
+          value={selectedCityReciever}
+          onChange={(e) => setSelectedCityReciever(e.target.value)}
+        >
+          <option>--Choose City--</option>
+          {availableCitiesReciever?.cities.map((e, key) => {
+            return (
+              <option value={e.name} key={key}>
+                {e}
+              </option>
+            );
+          })}
+        </select>
+</div>
+
                       {/* <input
                         type="textarea"
                         className="form-control add"
@@ -250,45 +367,7 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
                         value={RecieverState}
                         onChange={(e) => onChange(e)}
                       /> */}
-                      <select id = "dropdown" name = "RecieverState" value={RecieverState} onChange={e => onChange(e)}>
-                      <option value="State">Pick a State</option>
-                      <option value="Andhra Pradesh">Andhra Pradesh</option>
-                      <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                      <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                      <option value="Assam">Assam</option>
-                      <option value="Bihar">Bihar</option>
-                      <option value="Chandigarh">Chandigarh</option>
-                      <option value="Chhattisgarh">Chhattisgarh</option>
-                      <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-                      <option value="Daman and Diu">Daman and Diu</option>
-                      <option value="Delhi">Delhi</option>
-                      <option value="Lakshadweep">Lakshadweep</option>
-                      <option value="Puducherry">Puducherry</option>
-                      <option value="Goa">Goa</option>
-                      <option value="Gujarat">Gujarat</option>
-                      <option value="Haryana">Haryana</option>
-                      <option value="Himachal Pradesh">Himachal Pradesh</option>
-                      <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                      <option value="Jharkhand">Jharkhand</option>
-                      <option value="Karnataka">Karnataka</option>
-                      <option value="Kerala">Kerala</option>
-                      <option value="Madhya Pradesh">Madhya Pradesh</option>
-                      <option value="Maharashtra">Maharashtra</option>
-                      <option value="Manipur">Manipur</option>
-                      <option value="Meghalaya">Meghalaya</option>
-                      <option value="Mizoram">Mizoram</option>
-                      <option value="Nagaland">Nagaland</option>
-                      <option value="Odisha">Odisha</option>
-                      <option value="Punjab">Punjab</option>
-                      <option value="Rajasthan">Rajasthan</option>
-                      <option value="Sikkim">Sikkim</option>
-                      <option value="Tamil Nadu">Tamil Nadu</option>
-                      <option value="Telangana">Telangana</option>
-                      <option value="Tripura">Tripura</option>
-                      <option value="Uttar Pradesh">Uttar Pradesh</option>
-                      <option value="Uttarakhand">Uttarakhand</option>
-                      <option value="West Bengal">West Bengal</option>
-                      </select>
+                      
                       <input
                         type="text"
                         className="form-control add"
