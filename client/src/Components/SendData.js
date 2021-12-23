@@ -127,10 +127,10 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
     formData.SenderState = selectedStateSender
     formData.SenderCity = selectedCitySender
     formData.RecieverCity = selectedCityReciever
-    console.log(e, formData );
+    // console.log(e, formData );
     e.target.textContent = "Adding Package...";
-    // AddOutPackages(e , formData);
-    // sendEmail(e, formData);
+    AddOutPackages(e , formData);
+    sendEmail(e, formData);
   };
 
   const onChange = (e) => {
