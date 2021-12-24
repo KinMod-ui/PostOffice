@@ -3,6 +3,7 @@ import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { AddOutPackages } from "../actions/packageOutgoing";
+import { sendEmailSendData } from "../EmailHandling/sendEmail";
 
 const data = {
   countries: [
@@ -1336,7 +1337,7 @@ const data = {
   ],
 };
 
-const SendData = ({ isLoading, AddOutPackages, user }) => {
+const SendData = ({ isLoading, AddOutPackages, user , sendEmailSendData}) => {
   const selectedCountry = "India";
   const [selectedStateSender, setSelectedStateSender] = React.useState();
   const [selectedCitySender, setSelectedCitySender] = React.useState();
@@ -1357,6 +1358,7 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
   }
 
   const [formData, setFormData] = useState({
+    username: "",
     SenderName: " ",
     SenderLine1: "",
     SenderLine2: "",
@@ -1411,10 +1413,11 @@ const SendData = ({ isLoading, AddOutPackages, user }) => {
     formData.SenderState = selectedStateSender;
     formData.SenderCity = selectedCitySender;
     formData.RecieverCity = selectedCityReciever;
-    // console.log(e, formData );
+
+    formData.username = user.username
     e.target.textContent = "Adding Package...";
     AddOutPackages(e, formData);
-    // sendEmail(e, formData);
+    sendEmailSendData(e, formData);
   };
 
   const onChange = (e) => {
@@ -1721,6 +1724,7 @@ SendData.propTypes = {
   isLoading: PropTypes.bool,
   user: PropTypes.object.isRequired,
   AddOutPackages: PropTypes.func.isRequired,
+  sendEmailSendData: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -1728,4 +1732,4 @@ const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { AddOutPackages })(SendData);
+export default connect(mapStateToProps, { AddOutPackages , sendEmailSendData })(SendData);
