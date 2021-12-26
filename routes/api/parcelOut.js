@@ -46,6 +46,7 @@ router.post('/' , [auth , [
 
         const newParcelOut = new ParcelOutgoing({
             SenderDetails : {
+                user : req.user.id,
                 name : body.SenderName,
                 Address : {
                     Line1 : body.SenderLine1,
@@ -109,6 +110,7 @@ router.get('/parcel/:id' , auth , async (req , res) => {
 router.get('/' , auth , async (req , res) => {
     try{
         const parcels = await ParcelOutgoing.find({user : req.user.id});
+        // console.log(req.user);
         res.json(parcels)
     } catch(err){
         console.error(err.message);
@@ -189,17 +191,17 @@ router.post('/:id' , [auth ,
 
         body = req.body
         body.price = parseInt(body.Price,10);
-        if (user.type !== 'OutGoing Handler' && user.type !== 'Admin'){
+        if (user.type !== 'Incoming Handler' && user.type !== 'Admin'){
             
-            if (parcel.DispatchStatus != body.DispatchStatus || parcel.Price !==  body.price || parcel.PackageWeight !== body.PackageWeight){
-                
-                return res.status(401).json({msg : "User not authroized"})
-            }
+            return res.status(401).json({msg : "User not authroized"});
+        }
+
+        if (parcel.user !== req.user.id.toString()){
+            return res.status(401).json({msg : "User not authroized"});
         }
 
         Object.assign(parcel
         ,{
-            
             PackageWeight : body.PackageWeight,
             Price : body.Price,
             DispatchStatus : body.DispatchStatus,

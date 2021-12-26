@@ -141,7 +141,9 @@ router.post('/parcel/:id' , [auth ,
 // @access Private
 router.get('/' , auth , async (req , res) => {
     try{
-        const parcels = await ParcelIncoming.find({user : req.user.id}).sort({ date: -1 });
+        const user = await User.findById(req.user.id);
+        // console.log(user ,req.user.id)
+        const parcels = await ParcelIncoming.find({username : user.username}).sort({ date: -1 });
         res.json(parcels)
 
     } catch(err){

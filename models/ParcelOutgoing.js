@@ -42,6 +42,10 @@ const DetailSchema = new Schema({
 })
 
 const ParcelOutgoingSchema = new Schema({
+    user : {
+        type : String,
+        required: true
+    },
     SenderDetails : {
         type : DetailSchema,
         required : true

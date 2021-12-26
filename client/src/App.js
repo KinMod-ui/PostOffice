@@ -96,6 +96,7 @@ const App = () => {
             <Route exact path="/" element={<Login />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/Register" element={<Register />} />
+            <Route path="/*" element={<NotFound />} />
           </Routes>
         </Router>
       </div>
