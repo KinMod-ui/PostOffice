@@ -1598,16 +1598,7 @@ const SendData = ({ isLoading, AddOutPackages, user , sendEmailSendData}) => {
                         value={RecieverLine2}
                         onChange={(e) => onChange(e)}
                       />
-                      <input
-                        type="textarea"
-                        className="form-control add"
-                        id="recieveraddressCITY"
-                        aria-describedby="recieverAddressCITY"
-                        placeholder="City"
-                        name="RecieverCity"
-                        value={RecieverCity}
-                        onChange={(e) => onChange(e)}
-                      />
+                      
 
                       <div>
                         <label className="form-label">State</label>
