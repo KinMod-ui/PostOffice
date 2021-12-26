@@ -43,10 +43,10 @@ router.post('/' , [auth , [
 
     try {
         body = req.body
-
+        // console.log(body)
         const newParcelOut = new ParcelOutgoing({
+            user : body.user,
             SenderDetails : {
-                user : req.user.id,
                 name : body.SenderName,
                 Address : {
                     Line1 : body.SenderLine1,
@@ -81,6 +81,7 @@ router.post('/' , [auth , [
         res.json(parcel);
 
     } catch (err) {
+        // console.log(err);
         res.status(500).send("Server Error");
     }
 });
@@ -109,7 +110,8 @@ router.get('/parcel/:id' , auth , async (req , res) => {
 // @access Private
 router.get('/' , auth , async (req , res) => {
     try{
-        const parcels = await ParcelOutgoing.find({user : req.user.id});
+        const user = await User.findById(req.user.id)
+        const parcels = await ParcelOutgoing.find({user : user.username});
         // console.log(req.user);
         res.json(parcels)
     } catch(err){

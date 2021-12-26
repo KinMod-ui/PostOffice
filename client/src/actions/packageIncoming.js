@@ -6,6 +6,7 @@ import {
     ADD_PACKAGE,
     DELETE_PACKAGE
 } from './types';
+import { sendEmail } from '../EmailHandling/sendEmail';
 
 // Get all incoming packages of a user
 export const GetIncPackages = () => async dispatch => {
@@ -84,7 +85,7 @@ export const UpdateIncPackages = (formData) => async dispatch => {
 }
 
 // Add a new incoming package
-export const AddIncPackages = (formData) => async dispatch => {
+export const AddIncPackages = (e , formData) => async dispatch => {
 
     try {
         const config = {
@@ -105,6 +106,8 @@ export const AddIncPackages = (formData) => async dispatch => {
             payload : res.data
         })
 
+        sendEmail(e , formData);
+
         dispatch(setAlert("Package Added" , 'success'));
 
     } catch (err) {
@@ -113,6 +116,6 @@ export const AddIncPackages = (formData) => async dispatch => {
             type : PACKAGE_ERROR,
             payload : {msg : err.response.statusText , status : err.response.status}
         })
-        
+        window.location.reload();
     }
 }

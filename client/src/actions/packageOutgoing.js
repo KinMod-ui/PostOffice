@@ -6,6 +6,7 @@ import {
     ADD_PACKAGE,
     DELETE_PACKAGE
 } from './types';
+import { sendEmailSendData } from '../EmailHandling/sendEmail';
 
 // Get all outgoing packages of a user
 export const GetOutPackages = () => async dispatch => {
@@ -75,9 +76,7 @@ export const UpdateOutPackages = (formData) => async dispatch => {
         dispatch(setAlert("Changes have been made" , 'success'))
 
     } catch (err) {
-        err.response.data.errors.map(err => 
-            dispatch(setAlert(err , 'danger'))
-        )
+        dispatch(setAlert(err.response.statusText , 'danger'))
         dispatch({
             type : PACKAGE_ERROR,
             payload : {msg : err.response.statusText , status : err.response.status}
@@ -125,9 +124,10 @@ export const AddOutPackages = (e , formData) => async dispatch => {
             DispatchStatus
         } = formData
         const PackageDescription = packdes;
-        
+        const user = formData.username
         
         const body = JSON.stringify({
+            user,     
             SenderName,
             SenderLine1,
             SenderLine2,
@@ -161,20 +161,19 @@ export const AddOutPackages = (e , formData) => async dispatch => {
         dispatch(setAlert("Package Added" , 'success'));
         
         scrollTop();
+        sendEmailSendData(e, formData);
         setTimeout( function(){ window.location.reload(); } , 1000);
-
+        
     } catch (err) {
 
         scrollTop();
-
-        err.response.data.errors.map(err => 
-            dispatch(setAlert(err , 'danger'))
-        )
-        
+        console.log(err)
+        dispatch(setAlert(err.response.statusText , 'danger'))
         dispatch({
             type : PACKAGE_ERROR,
             payload : {msg : err.response.statusText , status : err.response.status}
         })
+        // setTimeout( function(){ window.location.reload(); } , 1000);
         e.target.textContent = "Add Package"
     }
 }

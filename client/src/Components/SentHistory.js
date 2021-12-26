@@ -6,7 +6,7 @@ import { GetOutPackages } from "../actions/packageOutgoing";
 
 const SentHistory = ({ GetOutPackages, package: { packages, loading } }) => {
   useEffect(() => {
-    console.log("Here");
+    // console.log("Here");
     GetOutPackages();
   }, [GetOutPackages]);
 

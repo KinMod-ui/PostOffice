@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { AddIncPackages } from "../actions/packageIncoming";
-import { sendEmail } from "../EmailHandling/sendEmail";
+
 
 const Addpackage = ({ AddIncPackages, sendEmail }) => {
   const [formData, setFormData] = useState({
@@ -16,9 +16,7 @@ const Addpackage = ({ AddIncPackages, sendEmail }) => {
   const onClick = (e) => {
     e.preventDefault();
     e.target.textContent = "Adding Package...";
-    AddIncPackages(formData);
-    // console.log(e);
-    sendEmail(e, formData);
+    AddIncPackages(e , formData);
   };
 
   const onChange = (e) => {
@@ -85,7 +83,6 @@ const Addpackage = ({ AddIncPackages, sendEmail }) => {
 
 Addpackage.propTypes = {
   AddIncPackages: PropTypes.func.isRequired,
-  sendEmail: PropTypes.func.isRequired,
 };
 
-export default connect(null, { AddIncPackages, sendEmail })(Addpackage);
+export default connect(null, { AddIncPackages })(Addpackage);
