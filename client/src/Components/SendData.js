@@ -1404,6 +1404,28 @@ const SendData = ({ isLoading, AddOutPackages, user , sendEmailSendData}) => {
     DispatchStatus,
   } = formData;
 
+
+  async function firstAsync(e , formData) {
+    let ret = {
+      poss : false
+    }
+    // let promise = 
+      // new Promise((res, rej) => {
+        await AddOutPackages(e, formData ,ret);
+        // setTimeout(() => res(ret), 1000)
+        // console.log(ret);
+        // res(ret);
+    // });
+
+
+    let result = await ret;
+    // console.log(result)
+      if (result.poss === true){
+        sendEmailSendData(e , formData)
+      }
+      // console.log(result.poss)
+}
+
   const onClick = (e) => {
     e.preventDefault();
     formData.SenderEmail = user.email;
@@ -1416,14 +1438,14 @@ const SendData = ({ isLoading, AddOutPackages, user , sendEmailSendData}) => {
 
     formData.username = user.username
     e.target.textContent = "Adding Package...";
-    const ret = {
-      poss : false
-    }
-    AddOutPackages(e, formData ,ret);
-    console.log(ret)
-    if (ret.poss){
-      sendEmailSendData(e, formData)
-    }
+    // const ret = {
+    //   poss : false
+    // }
+    firstAsync(e , formData);
+    // console.log(ret)
+    // if (ret.poss){
+    //   sendEmailSendData(e, formData)
+    // }
   };
 
   const onChange = (e) => {

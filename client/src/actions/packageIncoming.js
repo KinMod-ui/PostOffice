@@ -99,16 +99,16 @@ export const AddIncPackages = (e , formData , ret) => async dispatch => {
         // const Status = current ? "Picked" : "Not Picked";
         const body = JSON.stringify({username , name , PackageDescription});
 
-        // const res = await axios.post(`/api/parcelInc` , body , config)
+        const res = await axios.post(`/api/parcelInc` , body , config)
 
-        // dispatch({
-        //     type : ADD_PACKAGE,
-        //     payload : res.data
-        // })
+        dispatch({
+            type : ADD_PACKAGE,
+            payload : res.data
+        })
 
         // console.log(e , formData)
-        dispatch(setAlert("Package Added" , 'success'));
         ret.poss = true;
+        dispatch(setAlert("Package Added" , 'success'));
         // return "Yes";
     } catch (err) {
         dispatch(setAlert(err.response.statusText , 'danger'))

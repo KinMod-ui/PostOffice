@@ -158,10 +158,11 @@ export const AddOutPackages = (e , formData , ret) => async dispatch => {
             payload : res.data
         })
 
+        ret.poss = true
+        // console.log("Ret here" , ret)
         dispatch(setAlert("Package Added" , 'success'));
         
         scrollTop();
-        ret.poss = true
         // setTimeout( function(){ window.location.reload(); } , 1000);
         
     } catch (err) {

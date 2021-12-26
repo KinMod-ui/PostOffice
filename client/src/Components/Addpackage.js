@@ -13,17 +13,33 @@ const Addpackage = ({ AddIncPackages, sendEmail }) => {
 
   const { packdes, name, username } = formData;
 
+  async function firstAsync(e , formData) {
+      let ret = {
+        poss : false
+      }
+      // let promise = 
+        // new Promise((res, rej) => {
+          await AddIncPackages(e , formData , ret);
+          // console.log(ret);
+          // res(ret);
+      // });
+
+
+      let result = await ret;
+      // console.log(result)
+        if (result.poss === true){
+          sendEmail(e , formData)
+        }
+        // console.log(result.poss)
+  }
+
   const onClick = (e) => {
     e.preventDefault();
     e.target.textContent = "Adding Package...";
-    let ret = {
-      poss : false
-    }
-    AddIncPackages(e , formData , ret);
-    console.log(ret.poss)
-    if (ret.poss === true){
-      sendEmail(e , formData)
-    }
+    
+    firstAsync(e , formData);
+    // AddIncPackages(e , formData , ret);
+    
   };
 
   const onChange = (e) => {
