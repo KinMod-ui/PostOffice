@@ -85,7 +85,7 @@ export const UpdateIncPackages = (formData) => async dispatch => {
 }
 
 // Add a new incoming package
-export const AddIncPackages = (e , formData) => async dispatch => {
+export const AddIncPackages = (e , formData , ret) => async dispatch => {
 
     try {
         const config = {
@@ -99,17 +99,17 @@ export const AddIncPackages = (e , formData) => async dispatch => {
         // const Status = current ? "Picked" : "Not Picked";
         const body = JSON.stringify({username , name , PackageDescription});
 
-        const res = await axios.post(`/api/parcelInc` , body , config)
+        // const res = await axios.post(`/api/parcelInc` , body , config)
 
-        dispatch({
-            type : ADD_PACKAGE,
-            payload : res.data
-        })
+        // dispatch({
+        //     type : ADD_PACKAGE,
+        //     payload : res.data
+        // })
 
-        sendEmail(e , formData);
-
+        // console.log(e , formData)
         dispatch(setAlert("Package Added" , 'success'));
-
+        ret.poss = true;
+        // return "Yes";
     } catch (err) {
         dispatch(setAlert(err.response.statusText , 'danger'))
         dispatch({

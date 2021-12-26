@@ -90,7 +90,7 @@ var scrollTop = function() {
 };
 
 // Add a new outgoing package
-export const AddOutPackages = (e , formData) => async dispatch => {
+export const AddOutPackages = (e , formData , ret) => async dispatch => {
 
     try {
         const config = {
@@ -161,8 +161,8 @@ export const AddOutPackages = (e , formData) => async dispatch => {
         dispatch(setAlert("Package Added" , 'success'));
         
         scrollTop();
-        sendEmailSendData(e, formData);
-        setTimeout( function(){ window.location.reload(); } , 1000);
+        ret.poss = true
+        // setTimeout( function(){ window.location.reload(); } , 1000);
         
     } catch (err) {
 

@@ -10,14 +10,12 @@ var scrollTop = function() {
     window.scrollTo(0, 0);
 };
 
-
 export const sendEmail = (e , formData) => async dispatch => {
 
     e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
 
     let email = ""
-
-    
+  
 
     try {
         const res = await axios.get(`/api/users/email/${formData.username}`);

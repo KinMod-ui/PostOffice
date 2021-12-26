@@ -3,6 +3,7 @@ import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { AddOutPackages } from "../actions/packageOutgoing";
+import { sendEmailSendData } from "../EmailHandling/sendEmail";
 
 const data = {
   countries: [
@@ -1415,8 +1416,14 @@ const SendData = ({ isLoading, AddOutPackages, user , sendEmailSendData}) => {
 
     formData.username = user.username
     e.target.textContent = "Adding Package...";
-    AddOutPackages(e, formData);
-    
+    const ret = {
+      poss : false
+    }
+    AddOutPackages(e, formData ,ret);
+    console.log(ret)
+    if (ret.poss){
+      sendEmailSendData(e, formData)
+    }
   };
 
   const onChange = (e) => {
@@ -1713,6 +1720,7 @@ SendData.propTypes = {
   isLoading: PropTypes.bool,
   user: PropTypes.object.isRequired,
   AddOutPackages: PropTypes.func.isRequired,
+  sendEmailSendData : PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -1720,4 +1728,4 @@ const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { AddOutPackages })(SendData);
+export default connect(mapStateToProps, { AddOutPackages , sendEmailSendData })(SendData);

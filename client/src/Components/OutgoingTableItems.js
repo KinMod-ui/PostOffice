@@ -46,7 +46,9 @@ const OutgoingTableItems = ({ pack, cnt, UpdateOutPackages }) => {
         formData.DispatchStatus = "Dispatched"
     }
     else formData.DispatchStatus = "Not Dispatched" 
-
+    if (!PickCheck){
+      formData.DispatchStatus = "Not Dispatched"
+    }
     UpdateOutPackages(formData);
   };
 
