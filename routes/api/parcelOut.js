@@ -193,7 +193,7 @@ router.post('/:id' , [auth ,
 
         body = req.body
         body.price = parseInt(body.Price,10);
-        if (user.type !== 'Incoming Handler' && user.type !== 'Admin'){
+        if (user.type !== 'OutGoing Handler' && user.type !== 'Admin'){
             
             return res.status(401).json({msg : "User not authroized"});
         }

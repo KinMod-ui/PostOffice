@@ -30,6 +30,7 @@ export const ChangeType = ({obj}) => async dispatch => {
         dispatch(setAlert("User Changed" , 'success'))
 
     } catch (err) {
+        if (err.response)
         dispatch(setAlert(err.response.statusText , 'danger'))
         dispatch({
             type : PACKAGE_ERROR,
